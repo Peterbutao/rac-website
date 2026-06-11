@@ -36,7 +36,8 @@
   --info:        #1a4f8a;
   --info-bg:     #e8f0fa;
 
-  --font-display: 'Anton', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  /* --font-display: 'Anton', sans-serif; */
   --font-display-alt: 'Playfair Display', Georgia, serif;
   --font-body:    'Montserrat', 'DM Sans', system-ui, sans-serif;
   --font-mono:    'DM Mono', 'Courier New', monospace;
