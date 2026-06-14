@@ -30,37 +30,35 @@
     }
   ];
 
-  const fourWayTest = [
-    'Is it the truth?',
-    'Is it fair to all concerned?',
-    'Will it build goodwill and good friendships?',
-    'Will it be beneficial to all concerned?'
-  ];
-
+  
   const focusAreas = [
-    { title: 'Peace and Conflict Prevention/Resolution', icon: Globe2 },
-    { title: 'Disease Prevention and Treatment', icon: Briefcase },
-    { title: 'Water and Sanitation', icon: MapPin },
-    { title: 'Maternal and Child Health', icon: Handshake },
-    { title: 'Basic Education and Literacy', icon: Globe },
-    { title: 'Economic and Community Development', icon: Briefcase },
-    { title: 'Environment', icon: Globe2 }
+    { title: 'Peace and Conflict Prevention/Resolution', icon: '/peacebuilding.svg', alt: 'Peace and conflict prevention icon' },
+    { title: 'Disease Prevention and Treatment', icon: '/disease-prevention.svg', alt: 'Disease prevention and treatment icon' },
+    { title: 'Water and Sanitation', icon: '/water-sanitation.svg', alt: 'Water and sanitation icon' },
+    { title: 'Maternal and Child Health', icon: '/maternal-child-health.svg', alt: 'Maternal and child health icon' },
+    { title: 'Basic Education and Literacy', icon: '/basic-education.svg', alt: 'Basic education and literacy icon' },
+    { title: 'Economic and Community Development', icon: '/community-economic-development.svg', alt: 'Economic and community development icon' },
+    { title: 'Environment', icon: '/environment.svg', alt: 'Environment icon' }
   ];
-
-  const rotaryObjects = [
+  
+   const rotaryObjects = [
     {
+      test: "is it the truth?",
       title: 'Encourage acquaintance',
       text: 'See friendship as a pathway to serve society.'
     },
     {
+      test: "is it fair to all concerned?",
       title: 'Promote high ethics',
       text: "Recognize the worthiness of all occupations and dignify each person's work as service."
     },
     {
+      test: "will it build goodwill and good friendships ?",
       title: 'Apply service',
       text: "Use service in personal, business, and community life."
     },
     {
+      test: "will it be beneficial to all concerned ?",
       title: 'Advance understanding',
       text: 'Build goodwill and peace through a worldwide fellowship united by service.'
     }
@@ -191,23 +189,21 @@
       </div>
       
       <div class="test-grid">
-        {#each fourWayTest as test, index}
+        {#each rotaryObjects as object, index}
         <article class="test-card">
             <span>0{index + 1}</span>
-            <p>{test}</p>
+            <p>{object.test}</p>
+            <div class="objects-grid">
+                <article class="object-card">
+                  <Handshake class="object-icon" size={28} stroke-width={2.2} />
+                  <h3>{object.title}</h3>
+                  <p>{object.text}</p>
+                </article>
+            </div>
           </article>
         {/each}
       </div>
 
-      <div class="objects-grid">
-        {#each rotaryObjects as object}
-          <article class="object-card">
-            <Handshake class="object-icon" size={28} stroke-width={2.2} />
-            <h3>{object.title}</h3>
-            <p>{object.text}</p>
-          </article>
-          {/each}
-      </div>
       </div>
   </section>
   
@@ -222,11 +218,11 @@
         {#each focusAreas as area, index}
         <article class="focus-card">
           <div class="focus-icon">
-            <svelte:component this={area.icon} size={24} stroke-width={2.2} />
+            <img src={area.icon} alt={area.alt} width="48" height="48" />
           </div>
-            <span>0{index + 1}</span>
-            <h3>{area.title}</h3>
-          </article>
+          <span>0{index + 1}</span>
+          <h3>{area.title}</h3>
+        </article>
         {/each}
       </div>
     </div>
@@ -300,26 +296,7 @@
     </div>
   </section>
 </main>
-<section class="about-hero">
-  <img class="hero-photo" src="{logo}" alt="Rotaract Club of Lilongwe members at a club event" />
-  <div class="hero-shade"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
 
-      <h1>ROTARACT CLUB<br /><span>OF LILONGWE</span></h1>
- 
-      <div class="hero-actions">
-        <a href="#leadership" class="btn-primary">Meet the leadership <ArrowRight size={16} /></a>
-        <a href="/join" class="btn-outline-white">Join the club</a>
-      </div>
-    </div>
-
-    <div class="hero-panel">
-      <img src={logo} alt="" />
-      <p>Rooted in Lilongwe. Connected to Rotary's worldwide ideal of service.</p>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="footer-inner">
@@ -343,14 +320,6 @@
 </footer>
 
 <style>
-  .about-nav .logo-name {
-    color: rgba(255, 255, 255, .85);
-  }
-
-  .about-nav.scrolled .logo-name {
-    color: var(--near-black);
-  }
-
   .about-hero {
     position: relative;
     min-height: 74vh;
@@ -710,14 +679,30 @@
 
   .objects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     gap: 18px;
+    margin-top: 28px;
   }
 
   .object-card {
     background: var(--cream);
     padding: 26px;
-    min-height: 220px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    min-height: 180px;
+    display: grid;
+    gap: 18px;
+  }
+
+  .object-card h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--near-black);
+  }
+
+  .object-card p {
+    margin: 0;
+    color: rgba(26, 26, 26, .64);
+    line-height: 1.7;
   }
 
   :global(.object-icon) {

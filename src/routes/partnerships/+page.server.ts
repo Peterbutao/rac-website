@@ -1,0 +1,73 @@
+import { fail } from '@sveltejs/kit';
+import type { Actions } from './$types';
+import { sendEmail, buildPartnershipEmail } from '$lib/server/email';
+
+export const actions: Actions = {
+  default: async ({ request }) => {
+    const data = await request.formData();
+
+    const organization_name = (data.get('organization_name') as string)?.trim();
+    const contact_name      = (data.get('contact_name') as string)?.trim();
+    const email             = (data.get('email') as string)?.trim().toLowerCase();
+    const phone             = (data.get('phone') as string)?.trim();
+    const partnership_type  = (data.get('partnership_type') as string)?.trim();
+    const message           = (data.get('message') as string)?.trim();
+
+    const values = { organization_name, contact_name, email, phone, partnership_type, message };
+
+    // Validate
+    const fieldErrors: Record<string, string> = {};
+
+    if (!organization_name || organization_name.length < 2)
+      fieldErrors.organization_name = 'Please enter your organization name.';
+
+    if (!contact_name || contact_name.length < 2)
+      fieldErrors.contact_name = 'Please enter your contact name.';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      fieldErrors.email = 'Please enter a valid email address.';
+
+    if (!phone || phone.length < 7)
+      fieldErrors.phone = 'Please enter a valid phone number.';
+
+    if (!partnership_type)
+      fieldErrors.partnership_type = 'Please select a partnership type.';
+
+    if (!message || message.length < 10)
+      fieldErrors.message = 'Please tell us more about your interest (at least 10 characters).';
+
+    if (Object.keys(fieldErrors).length > 0) {
+      return fail(422, { fieldErrors, values });
+    }
+
+    // Send email notification
+    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@rotaractlilongwe.org';
+    const emailContent = buildPartnershipEmail({
+      organization_name: organization_name!,
+      contact_name: contact_name!,
+      email: email!,
+      phone: phone!,
+      partnership_type: partnership_type!,
+      message: message!,
+    });
+
+    const emailResult = await sendEmail({
+      to: notificationEmail,
+      subject: emailContent.subject,
+      html: emailContent.html,
+      replyTo: email,
+    });
+
+    if (!emailResult.success) {
+      console.error('❌ Failed to send partnership notification email:', emailResult.error);
+      return fail(500, { error: 'Something went wrong sending your inquiry. Please try again.', values });
+    }
+
+    return {
+      success: true,
+      organization_name,
+      contact_name,
+      email,
+    };
+  }
+};

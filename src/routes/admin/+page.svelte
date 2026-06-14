@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { 
+import { 
     FileText, 
     Users, 
     DollarSign, 
@@ -7,7 +7,8 @@
     Clock, 
     Target,
     RefreshCw,
-    Database
+    Database,
+    UserCheck
   } from 'lucide-svelte';
 
   export let data;
@@ -21,6 +22,7 @@
   }
 
   let syncing = false;
+  let memberSyncing = false;
 
   async function triggerSync() {
     syncing = true;
@@ -39,6 +41,28 @@
       alert('Sync failed: ' + (err instanceof Error ? err.message : 'Unknown error'));
     } finally {
       syncing = false;
+    }
+  }
+
+  async function triggerMemberSync() {
+    memberSyncing = true;
+
+    try {
+      const res = await fetch('/api/sync-members', { method: 'POST' });
+      const result = await res.json();
+      
+      if (result.error) {
+        alert('Member sync failed: ' + result.error);
+      } else if (result.message?.includes('not configured')) {
+        alert('⚠️ Apps Script URL not configured.\n\nPlease set the MEMBERS_SHEET_APP_SCRIPT_URL in src/routes/api/sync-members/+server.ts\n\nSee "Apps Script Setup" section below for instructions.');
+      } else {
+        alert(`✅ Member sync completed!\n\nSynced ${result.recordsProcessed} members to Google Sheets.`);
+        window.location.reload();
+      }
+    } catch (err) {
+      alert('Member sync failed: ' + (err instanceof Error ? err.message : 'Unknown error'));
+    } finally {
+      memberSyncing = false;
     }
   }
 </script>
@@ -117,6 +141,37 @@
           <p>
             <strong>Auto-sync:</strong> Data syncs automatically when you log in.
             Sheets: MEMBER_DUES, MEETING_ATTENDANCE, VOLUNTEER_HOURS, ACTIVITIES
+          </p>
+        </div>
+      </div>
+
+      <!-- Members Google Sheets Sync -->
+      <div class="card sync-card" style="margin-bottom:var(--space-8)">
+        <div class="sync-header">
+          <div class="sync-title">
+            <UserCheck size={20} />
+            <div>
+              <h4>Sync Members to Google Sheets</h4>
+              <p class="sync-subtitle">
+                Syncs member records (ID, RAC Number, Name, Phone, Gmail) to the MEMBERS sheet.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn--primary" on:click={triggerMemberSync} disabled={memberSyncing}>
+            {#if memberSyncing}
+              <RefreshCw size={16} class="spin" />
+              <span>Syncing Members...</span>
+            {:else}
+              <UserCheck size={16} />
+              <span>Sync Members</span>
+            {/if}
+          </button>
+        </div>
+        <div class="sync-info">
+          <p>
+            <strong>Columns synced:</strong> id, rac_number, full_name, phone, gmail
+            &nbsp;·&nbsp;
+            <strong>Sheet:</strong> MEMBERS
           </p>
         </div>
       </div>

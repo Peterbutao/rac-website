@@ -18,7 +18,7 @@
     <img class="hero-photo" src={logo} alt="Rotaract Club of Lilongwe logo" />
     <div class="hero-shade"></div>
     <div class="hero-inner">
-      <a class="back-link" href="/about"><ArrowLeft size={16} /> About the club</a>
+
       <div class="section-pill dark">CLUB GOVERNANCE</div>
       <h1>CONSTITUTION<br /><span>&amp; BY-LAWS</span></h1>
       <p>

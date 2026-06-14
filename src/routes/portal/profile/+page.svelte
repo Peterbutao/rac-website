@@ -4,7 +4,9 @@
   export let form: any;
 
   let editing = false;
+  let showChangePassword = false;
   let saving = false;
+  let savingPassword = false;
   let savingCommittees = false;
   let selectedCommitteeIds: string[] = [];
   let selectedCommitteeMemberId: number | null = null;
@@ -294,9 +296,62 @@
           </div>
         {/if}
         {#if !editing}
-        <button class="btn btn--outline" on:click={() => editing = true}>Edit Profile</button>
-      {/if}
+          <button class="btn btn--outline" on:click={() => editing = true} style="margin-top:var(--space-4)">Edit Profile</button>
+          <button class="btn btn--outline" on:click={() => showChangePassword = true} style="margin-top:var(--space-3)">
+            Change Password
+          </button>
+        {/if}
       </div>
+
+      <!-- Change Password Card -->
+      {#if showChangePassword}
+        <div class="card details-card">
+          <form
+            method="POST"
+            action="?/changePassword"
+            use:enhance={() => {
+              savingPassword = true;
+              return async ({ update }) => {
+                savingPassword = false;
+                showChangePassword = false;
+                await update();
+              };
+            }}
+          >
+            <h4 style="margin-bottom:var(--space-6)">Change Password</h4>
+
+            {#if form?.success}
+              <div class="alert alert--success" style="margin-bottom:var(--space-5)">
+                ✓ {form.message}
+              </div>
+            {/if}
+            {#if form?.error}
+              <div class="alert alert--error" style="margin-bottom:var(--space-5)">
+                {form.error}
+              </div>
+            {/if}
+
+            <div class="form-group" style="margin-bottom:var(--space-5)">
+              <label class="form-label" for="current_password">Current Password</label>
+              <input id="current_password" name="current_password" type="password" class="form-input" placeholder="Enter current password" required disabled={savingPassword} />
+            </div>
+            <div class="form-group" style="margin-bottom:var(--space-5)">
+              <label class="form-label" for="new_password">New Password</label>
+              <input id="new_password" name="new_password" type="password" class="form-input" placeholder="At least 6 characters" required disabled={savingPassword} minlength={6} />
+            </div>
+            <div class="form-group" style="margin-bottom:var(--space-6)">
+              <label class="form-label" for="confirm_password">Confirm New Password</label>
+              <input id="confirm_password" name="confirm_password" type="password" class="form-input" placeholder="Re-enter new password" required disabled={savingPassword} />
+            </div>
+            <div style="display:flex;gap:var(--space-3)">
+              <button type="submit" class="btn btn--primary" disabled={savingPassword}>
+                {savingPassword ? 'Updating…' : 'Update Password'}
+              </button>
+              <button type="button" class="btn btn--ghost" on:click={() => showChangePassword = false}>Cancel</button>
+            </div>
+          </form>
+        </div>
+      {/if}
     </div>
     {/if}
   </div>
@@ -560,8 +615,25 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+    overflow-x: hidden;
+  }
+  .portal-page {
+    overflow-x: hidden;
+  }
   .profile-grid { grid-template-columns: 1fr; }
-  .identity-card { position: static; }
+  .identity-card { 
+    position: static;
+    padding: var(--space-6) var(--space-4);
+  }
+  .identity-card__avatar {
+    width: 64px; height: 64px;
+    font-size: 1.4rem;
+  }
+  .identity-card__name {
+    font-size: 1.1rem;
+  }
   .details-card,
   .committees-card,
   .profile-stats-card {
@@ -576,6 +648,41 @@
   .stats-grid,
   .committees-list {
     grid-template-columns: 1fr;
+  }
+  .stat-tile {
+    min-height: auto;
+    padding: var(--space-3);
+  }
+  .stat-tile strong {
+    font-size: 1rem;
+    margin-top: var(--space-2);
+  }
+  .detail-row {
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3) 0;
+  }
+  .detail-label {
+    width: auto;
+  }
+  .committee-choice {
+    padding: var(--space-3);
+  }
+  .committee-badge {
+    padding: var(--space-3);
+  }
+  .info-box {
+    padding: var(--space-4) !important;
+  }
+  .points-pill {
+    min-width: 70px;
+  }
+  .points-pill strong {
+    font-size: 1.25rem;
+  }
+  .portal-page-header {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 </style>

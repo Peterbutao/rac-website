@@ -112,17 +112,15 @@
         <hr class="divider" style="margin:var(--space-8) 0" />
 
         <div style="display:flex;gap:var(--space-4);justify-content:center;font-size:0.875rem;color:var(--text-muted)">
-          <a href="#forgot" on:click|preventDefault={() => showForgotPassword = true} style="color:var(--gold);font-weight:500;cursor:pointer">
-            Forgot Password?
-          </a>
-          <span>•</span>
+          <!-- <button type="button" on:click={() => showForgotPassword = true} style="background:none;border:none;color:var(--gold);font-weight:500;cursor:pointer;font-size:0.875rem;padding:0;font-family:inherit">Forgot Password?</button> -->
+          <!-- <span>•</span> -->
           <a href="/join" style="color:var(--gold);font-weight:500">Apply to join</a>
         </div>
       {:else}
         <!-- FORGOT PASSWORD FORM -->
         <h3>Reset Password</h3>
         <p style="color:var(--text-muted);margin-top:var(--space-1);margin-bottom:var(--space-8)">
-          Enter your email and we'll send you a password reset link.
+          Enter your RAC number and we'll send a reset link to your registered email.
         </p>
 
         {#if form?.success}
@@ -145,13 +143,14 @@
           };
         }}>
           <div class="form-group">
-            <label class="form-label" for="reset_email">Email Address</label>
+            <label class="form-label" for="reset_rac">RAC Number</label>
             <input
-              id="reset_email"
-              type="email"
+              id="reset_rac"
+              type="text"
               class="form-input"
-              name="email"
-              placeholder="your.email@example.com"
+              name="rac_number"
+              placeholder="e.g. rac026001"
+              autocapitalize="none"
               bind:value={resetEmail}
               required
               disabled={submitting}
