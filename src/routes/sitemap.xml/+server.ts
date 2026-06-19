@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 
-const BASE_URL = 'https://rotaractlilongwe.org';
+const BASE_URL = 'https://rotaractlilongwe.pages.dev/';
 
 const staticPages = [
   { url: '/', priority: 1.0, changefreq: 'weekly' },

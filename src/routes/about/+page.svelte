@@ -135,10 +135,6 @@
         </p>
 
       </div>
-
-      <div class="hero-panel">
-        <p>rooted the core belief of service above self</p>
-      </div>
     </div>
   </section>
   
@@ -191,16 +187,29 @@
       <div class="test-grid">
         {#each rotaryObjects as object, index}
         <article class="test-card">
-            <span>0{index + 1}</span>
-            <p>{object.test}</p>
-            <div class="objects-grid">
-                <article class="object-card">
-                  <Handshake class="object-icon" size={28} stroke-width={2.2} />
-                  <h3>{object.title}</h3>
-                  <p>{object.text}</p>
-                </article>
-            </div>
-          </article>
+          <span>0{index + 1}</span>
+          <p>{object.test}</p>
+          
+        </article>
+        {/each}
+      </div>
+      <div class="principles-header">
+        <div>
+          <div class="section-pill dark">ROTARY OBJECTS</div>
+        </div>
+        <p>The Objects guide the things Rotarians and Rotaractors think, say, and do.</p>
+      </div>
+
+      <div class="test-grid">
+        {#each rotaryObjects as object, index}
+        <div class="objects-grid">
+            <article class="object-card">
+              <Handshake class="object-icon" size={28} stroke-width={2.2} />
+              <h3>{object.title}</h3>
+              <p>{object.text}</p>
+            </article>
+        </div>
+ 
         {/each}
       </div>
 
@@ -324,27 +333,21 @@
     position: relative;
     min-height: 74vh;
     overflow: hidden;
-    background: var(--near-black);
     display: flex;
     align-items: center;
     padding: 120px 5vw 72px;
+    background-image: linear-gradient(90deg, rgba(26, 26, 26, .94) 0%, rgba(26, 26, 26, .72) 52%, rgba(26, 26, 26, .35) 100%), linear-gradient(180deg, rgba(232, 23, 93, .15) 0%, transparent 100%), url("https://kwwvmkszattobpgisslt.supabase.co/storage/v1/object/public/RAC/BACKGROUND/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .hero-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: .34;
+    display: none;
   }
 
   .hero-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(26, 26, 26, .96) 0%, rgba(26, 26, 26, .72) 52%, rgba(26, 26, 26, .35) 100%),
-      linear-gradient(0deg, rgba(26, 26, 26, .96) 0%, rgba(26, 26, 26, 0) 45%);
+    display: none;
   }
 
   .hero-inner {

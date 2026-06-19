@@ -7,7 +7,7 @@
   import { user, member, loading } from '$lib/stores/auth';
   import { createClient } from '$lib/supabase';
   import { generateSEO, generateStructuredData } from '$lib/seo';
-  import { FileText, Users, User, BookOpen } from 'lucide-svelte';
+  import { FileText, Users, User, BookOpen, Handshake, Heart, UserPlus, LogIn, Info, Layers } from 'lucide-svelte';
 
   export let data;
 
@@ -132,13 +132,33 @@
     </a>
 
     <nav class="site-nav" class:navscrolled={scrolled}>
-      <a href="/about"    class="mob site-nav__link" on:click={() => menuOpen = false}>About</a>
-      <a href="/projects" class="mob site-nav__link" on:click={() => menuOpen = false}>Projects</a>
-      <a href="/join"      class="mob site-nav__link" on:click={() => menuOpen = false}>Join Us</a>
+      <a href="/about"    class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
+        <Info size={15} stroke-width={2.4} />
+        <span>About</span>
+      </a>
+      <a href="/projects" class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
+        <Layers size={15} stroke-width={2.4} />
+        <span>Projects</span>
+      </a>
+      <a href="/partnerships" class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
+        <Handshake size={15} stroke-width={2.4} />
+        <span>Partnerships</span>
+      </a>
+      <a href="/donate" class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
+        <Heart size={15} stroke-width={2.4} />
+        <span>Donate</span>
+      </a>
+      <a href="/join"      class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
+        <UserPlus size={15} stroke-width={2.4} />
+        <span>Join Us</span>
+      </a>
       {#if $user}
         <a href="/portal"  class="site-nav__link site-nav__link--cta" on:click={() => menuOpen = false}>My Portal</a>
       {:else}
-        <a href="/login"   class="btn-login mobile-login" on:click={() => menuOpen = false}>Member Login</a>
+        <a href="/login"   class="site-nav__link site-nav__link--cta nav-icon-link" on:click={() => menuOpen = false}>
+          <LogIn size={15} stroke-width={2.4} />
+          <span>Login</span>
+        </a>
       {/if}
     </nav>
 
@@ -337,6 +357,30 @@ main.has-mobile-nav { padding-bottom: 70px; }
   height: 68px;
   margin: 0 auto;
   max-width: 1200px;
+  padding: 0 5vw;
+}
+
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration) var(--ease), background var(--duration) var(--ease);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.navscrolled .nav-icon-link {
+  color: var(--near-black) !important;
+}
+
+.nav-icon-link:hover {
+  color: var(--primary) !important;
+  background: var(--cream-mid);
 }
 
 .site-logo {

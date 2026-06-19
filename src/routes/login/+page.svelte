@@ -16,20 +16,21 @@
 
 <div class="login-page">
   <div class="login-page__left">
+    <div class="hero-shade"></div>
     <div class="login-page__left-content">
-      <a href="/" class="back-link" style="color:rgba(255,255,255,0.4)">← Back to home</a>
+      <a href="/" class="back-link">← Back to home</a>
       <div class="login-brand">
-        <span style="font-size:3rem;color:var(--gold)">⚙</span>
-        <h2 style="color:var(--white);margin-top:var(--space-4)">Member Portal</h2>
-        <p style="color:rgba(255,255,255,0.55);margin-top:var(--space-3);line-height:1.7">
+        <div class="section-pill dark">MEMBER PORTAL</div>
+        <h2>WELCOME<br /><span>BACK</span></h2>
+        <p>
           Sign in with your assigned RAC number.
           If you haven't received your credentials yet, your application may still be under review.
         </p>
       </div>
       <div class="login-info-box">
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.45)">
+        <p>
           Your RAC number follows the format:<br/>
-          <code style="color:var(--gold-light);font-family:var(--font-mono)">rac026000</code>
+          <code class="rac-format">rac026000</code>
         </p>
       </div>
     </div>
@@ -186,42 +187,91 @@
   min-height: 100vh;
 }
 .login-page__left {
-  background: var(--near-black);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-12);
   position: relative;
   overflow: hidden;
+  background: var(--near-black) ;
 }
 .login-page__left::before {
-  content: '';
-  position: absolute;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(232,23,93,0.16), transparent 70%);
-  top: -50px; right: -50px;
-  border-radius: 50%;
+  display: none;
+}
+.hero-shade {
+  display: none;
 }
 .login-page__left-content {
   max-width: 380px;
   position: relative;
   z-index: 1;
 }
-.login-brand { margin-top: var(--space-8); }
+.login-brand { margin-top: var(--space-6); }
+.login-brand h2 {
+  font-family: 'Anton', sans-serif;
+  color: white;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: .9;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+.login-brand h2 span {
+  color: var(--primary);
+}
+.login-brand p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: rgba(255, 255, 255, .65);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-top: 0;
+}
+.section-pill {
+  display: inline-flex;
+  width: fit-content;
+  background: rgba(232, 23, 93, .1);
+  color: var(--primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.section-pill.dark {
+  background: rgba(232, 23, 93, .18);
+  border: 1px solid rgba(232, 23, 93, .42);
+}
 .login-info-box {
-  margin-top: var(--space-10);
-  padding: var(--space-4) var(--space-5);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--radius-md);
+  margin-top: var(--space-8);
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 4px;
+}
+.login-info-box p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+.rac-format {
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 .back-link {
   display: inline-block;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   text-decoration: none;
-  transition: color var(--duration);
+  color: rgba(255,255,255,0.4);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color .2s ease;
 }
-.back-link:hover { color: var(--gold-light) !important; }
+.back-link:hover { color: var(--primary) !important; }
 
 .login-page__right {
   display: flex;

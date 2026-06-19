@@ -52,7 +52,7 @@ export function generateStructuredData(seo: SEOData): object {
     name: seo.siteName,
     alternateName: 'Rotaract Lilongwe',
     description: seo.description,
-    url: seo.url || 'https://rotaractlilongwe.org',
+    url: seo.url || 'https://rotaractlilongwe.pages.dev/',
     logo: seo.image,
     foundingDate: '2017',
     address: {
@@ -62,14 +62,14 @@ export function generateStructuredData(seo: SEOData): object {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@rotaractlilongwe.org',
+      email: 'lilongweerotaract@outlook.com',
       contactType: 'customer service',
     },
     sameAs: [
       'https://www.instagram.com/rotaractlilongwe/',
       'https://www.facebook.com/rotaractlilongwe',
-      'https://twitter.com/rotaractlilongwe',
-      'https://www.linkedin.com/company/rotaract-lilongwe',
+      'https://x.com/RACLilongwe',
+      'https://www.linkedin.com/company/rotaract-club-of-lilongwe/',
     ],
     memberOf: {
       '@type': 'Organization',

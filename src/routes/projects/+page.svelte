@@ -19,27 +19,10 @@
   <title>Projects — Rotaract Club of Lilongwe</title>
 </svelte:head>
 
-<!-- HERO SECTION -->
-<section class="projects-hero">
-  <div class="hero-blob-1"></div>
-  <div class="hero-blob-2"></div>
-  <div class="hero-content">
-    <div class="hero-badge">OUR IMPACT</div>
-    <h1 class="hero-title">
-      FEATURED<br/>
-      <span class="hero-accent">PROJECTS</span>
-    </h1>
-    <p class="hero-sub">
-      From community development to health outreach, discover how we're transforming lives across Lilongwe through service and action.
-    </p>
-  </div>
-</section>
-
 <!-- PROJECTS GRID -->
 <section class="projects-section">
   <div class="projects-container">
     <div class="projects-header">
-      <h2 class="section-title">All Projects</h2>
       <p class="section-subtitle">Our ongoing and completed initiatives making a difference in communities</p>
     </div>
 
@@ -87,7 +70,6 @@
     <p class="cta-sub">Join us in making a difference. Apply to become a member or volunteer for our upcoming projects.</p>
     <div class="cta-buttons">
       <a href="/join" class="btn-primary">Apply to Join</a>
-      <a href="/#Events" class="btn-outline">View Events</a>
     </div>
   </div>
 </section>
