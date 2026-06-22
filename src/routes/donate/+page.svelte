@@ -4,7 +4,7 @@
   import logo from '$lib/assets/logo.png';
   import { BookOpen, Heart, Leaf, Users, ArrowRight } from 'lucide-svelte';
 
-  export let form: ActionData;
+  export let form: ActionData & { error?: string };
 
   let submitting = false;
 
@@ -295,8 +295,7 @@
           </p>
         </div>
       </div>
-       <a href="mailto:info@rotaractlilongwe.org?subject=Donation%20Interest" class="btn-white">Email Us Directly</a>
-       <a href="#contact" class="btn-white" style="margin-left: 12px;">Express your interest</a>
+       <a href="#contact" class="btn-white">Express your interest</a>
      </div>
    </section>
  </main>

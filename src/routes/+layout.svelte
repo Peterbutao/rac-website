@@ -155,9 +155,8 @@
       {#if $user}
         <a href="/portal"  class="site-nav__link site-nav__link--cta" on:click={() => menuOpen = false}>My Portal</a>
       {:else}
-        <a href="/login"   class="site-nav__link site-nav__link--cta nav-icon-link" on:click={() => menuOpen = false}>
-          <LogIn size={15} stroke-width={2.4} />
-          <span>Login</span>
+        <a href="/login"   class="site-nav__link site-nav__link--cta nav-icon-link" style="border-radius: 4rem;" on:click={() => menuOpen = false}>
+          <span>Member Login</span>
         </a>
       {/if}
     </nav>

@@ -126,6 +126,31 @@ export interface JoinApplication {
   updated_at: string;
 }
 
+export interface PartnershipInquiry {
+  id: number;
+  organization_name: string;
+  contact_name: string;
+  email: string;
+  phone: string;
+  partnership_type: string;
+  message: string;
+  status: 'new' | 'contacted' | 'rejected';
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DonationInterest {
+  id: number;
+  full_name: string;
+  email: string;
+  phone: string;
+  amount: number;
+  message: string | null;
+  status: 'new' | 'contacted' | 'completed';
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -183,6 +208,16 @@ export interface Database {
         Row: JoinApplication;
         Insert: Omit<JoinApplication, 'id' | 'status' | 'rac_number' | 'rac_assigned_at' | 'rejection_reason' | 'reviewed_by' | 'submitted_at' | 'created_at' | 'updated_at'>;
         Update: Partial<Pick<JoinApplication, 'status' | 'rac_number' | 'rac_assigned_at' | 'rejection_reason' | 'reviewed_by' | 'updated_at'>>;
+      };
+      partnership_inquiries: {
+        Row: PartnershipInquiry;
+        Insert: Omit<PartnershipInquiry, 'id' | 'status' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<PartnershipInquiry, 'id' | 'created_at'>>;
+      };
+      donation_interests: {
+        Row: DonationInterest;
+        Insert: Omit<DonationInterest, 'id' | 'status' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<DonationInterest, 'id' | 'created_at'>>;
       };
     };
     Views: {

@@ -32,13 +32,13 @@
 
   
   const focusAreas = [
-    { title: 'Peace and Conflict Prevention/Resolution', icon: '/peacebuilding.svg', alt: 'Peace and conflict prevention icon' },
-    { title: 'Disease Prevention and Treatment', icon: '/disease-prevention.svg', alt: 'Disease prevention and treatment icon' },
-    { title: 'Water and Sanitation', icon: '/water-sanitation.svg', alt: 'Water and sanitation icon' },
-    { title: 'Maternal and Child Health', icon: '/maternal-child-health.svg', alt: 'Maternal and child health icon' },
-    { title: 'Basic Education and Literacy', icon: '/basic-education.svg', alt: 'Basic education and literacy icon' },
-    { title: 'Economic and Community Development', icon: '/community-economic-development.svg', alt: 'Economic and community development icon' },
-    { title: 'Environment', icon: '/environment.svg', alt: 'Environment icon' }
+    { title: 'Peace and Conflict Prevention/Resolution', icon: '/AOF_peace_color_no_title.png', alt: 'Peace and conflict prevention icon' },
+    { title: 'Disease Prevention and Treatment', icon: '/AOF_disease_color_no_title.png', alt: 'Disease prevention and treatment icon' },
+    { title: 'Water and Sanitation', icon: '/AOF_water_color_no_title.png', alt: 'Water and sanitation icon' },
+    { title: 'Maternal and Child Health', icon: '/AOF_maternal_color_no_title.png', alt: 'Maternal and child health icon' },
+    { title: 'Basic Education and Literacy', icon: '/AOF_education_color_no_title.png', alt: 'Basic education and literacy icon' },
+    { title: 'Economic and Community Development', icon: '/AOF_economic_color_no_title.png', alt: 'Economic and community development icon' },
+    { title: 'Environment', icon: '/AOF_environment_color_no_title.png', alt: 'Environment icon' }
   ];
   
    const rotaryObjects = [

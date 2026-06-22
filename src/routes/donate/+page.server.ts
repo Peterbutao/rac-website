@@ -1,5 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { createSupabaseServiceClient } from '$lib/server/supabase';
 
 export const actions: Actions = {
   default: async ({ request }) => {
@@ -30,6 +31,21 @@ export const actions: Actions = {
 
     if (Object.keys(fieldErrors).length > 0) {
       return fail(422, { fieldErrors, values });
+    }
+
+    // Save to database
+    const supabase = createSupabaseServiceClient();
+    const { error } = await supabase.from('donation_interests').insert({
+      full_name,
+      email,
+      phone,
+      amount: parseFloat(amount!),
+      message,
+    } as any);
+
+    if (error) {
+      console.error('Failed to save donation interest:', error);
+      return fail(500, { error: 'Something went wrong saving your donation interest. Please try again.', values });
     }
 
     return {

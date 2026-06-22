@@ -228,18 +228,38 @@ import {
         <span class="admin-card__link">Manage Hours →</span>
       </a>
 
-      <!-- Activities -->
-      <a href="/admin/activities" class="admin-card">
-        <div class="admin-card__icon">
-          <Target size={24} />
-        </div>
-        <h4>Activities</h4>
-        <p>Create and manage club activities.</p>
-        <span class="admin-card__link">Manage Activities →</span>
-      </a>
-    </div>
-  </div>
-</div>
+       <!-- Activities -->
+       <a href="/admin/activities" class="admin-card">
+         <div class="admin-card__icon">
+           <Target size={24} />
+         </div>
+         <h4>Activities</h4>
+         <p>Create and manage club activities.</p>
+         <span class="admin-card__link">Manage Activities →</span>
+       </a>
+
+       <!-- Partnership Inquiries -->
+       <a href="/admin/partnerships" class="admin-card">
+         <div class="admin-card__icon">
+           <Users size={24} />
+         </div>
+         <h4>Partnership Inquiries</h4>
+         <p>View and manage partnership inquiries.</p>
+         <span class="admin-card__link">View Inquiries →</span>
+       </a>
+
+       <!-- Donation Interests -->
+       <a href="/admin/donations" class="admin-card">
+         <div class="admin-card__icon">
+           <DollarSign size={24} />
+         </div>
+         <h4>Donation Interests</h4>
+         <p>View and manage donation interests.</p>
+         <span class="admin-card__link">View Donations →</span>
+       </a>
+     </div>
+   </div>
+ </div>
 
 <style>
   .container {
