@@ -1,6 +1,5 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { sendEmail, buildDonationEmail } from '$lib/server/email';
 
 export const actions: Actions = {
   default: async ({ request }) => {
@@ -31,31 +30,6 @@ export const actions: Actions = {
 
     if (Object.keys(fieldErrors).length > 0) {
       return fail(422, { fieldErrors, values });
-    }
-
-    // Build the donation amount display string
-    const amountDisplay = `MWK ${parseFloat(amount!).toLocaleString()}`;
-
-    // Send email notification
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@rotaractlilongwe.org';
-    const emailContent = buildDonationEmail({
-      full_name: full_name!,
-      email: email!,
-      phone: phone!,
-      amount: amountDisplay,
-      message,
-    });
-
-    const emailResult = await sendEmail({
-      to: notificationEmail,
-      subject: emailContent.subject,
-      html: emailContent.html,
-      replyTo: email,
-    });
-
-    if (!emailResult.success) {
-      console.error('❌ Failed to send donation notification email:', emailResult.error);
-      return fail(500, { error: 'Something went wrong processing your donation. Please try again.', values });
     }
 
     return {

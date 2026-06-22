@@ -295,10 +295,11 @@
           </p>
         </div>
       </div>
-      <a href="#contact" class="btn-white">Express your interest</a>
-    </div>
-  </section>
-</main>
+       <a href="mailto:info@rotaractlilongwe.org?subject=Donation%20Interest" class="btn-white">Email Us Directly</a>
+       <a href="#contact" class="btn-white" style="margin-left: 12px;">Express your interest</a>
+     </div>
+   </section>
+ </main>
 
 <!-- ─── FOOTER ─── -->
 <footer>

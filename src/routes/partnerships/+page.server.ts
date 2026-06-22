@@ -1,6 +1,5 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { sendEmail, buildPartnershipEmail } from '$lib/server/email';
 
 export const actions: Actions = {
   default: async ({ request }) => {
@@ -38,29 +37,6 @@ export const actions: Actions = {
 
     if (Object.keys(fieldErrors).length > 0) {
       return fail(422, { fieldErrors, values });
-    }
-
-    // Send email notification
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@rotaractlilongwe.org';
-    const emailContent = buildPartnershipEmail({
-      organization_name: organization_name!,
-      contact_name: contact_name!,
-      email: email!,
-      phone: phone!,
-      partnership_type: partnership_type!,
-      message: message!,
-    });
-
-    const emailResult = await sendEmail({
-      to: notificationEmail,
-      subject: emailContent.subject,
-      html: emailContent.html,
-      replyTo: email,
-    });
-
-    if (!emailResult.success) {
-      console.error('❌ Failed to send partnership notification email:', emailResult.error);
-      return fail(500, { error: 'Something went wrong sending your inquiry. Please try again.', values });
     }
 
     return {

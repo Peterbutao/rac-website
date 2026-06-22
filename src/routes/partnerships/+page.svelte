@@ -89,7 +89,8 @@
           <p class="success-card__copy">
             Our partnerships team will review your request and reach out to you at <strong>{form.email}</strong> within 3–5 business days.
           </p>
-          <a href="/" class="btn-primary">Back to Home</a>
+          <a href="mailto:info@rotaractlilongwe.org?subject=Partnership%20Inquiry%20-{form.organization_name}&body=Organization:%20{form.organization_name}%0AContact:%20{form.contact_name}%0AEmail:%20{form.email}%0APhone:%20{phone}%0AType:%20{partnership_type}%0AMessage:%20{message}" class="btn-primary">Send via Email</a>
+          <a href="/" class="btn-primary" style="margin-left: 12px;">Back to Home</a>
         </div>
       {:else}
         <div class="form-header">
@@ -252,10 +253,11 @@
           </p>
         </div>
       </div>
-      <a href="#contact" class="btn-white">Start the conversation</a>
-    </div>
-  </section>
-</main>
+       <a href="mailto:info@rotaractlilongwe.org?subject=Partnership%20Inquiry" class="btn-white">Email Us Directly</a>
+       <a href="#contact" class="btn-white" style="margin-left: 12px;">Start the conversation</a>
+     </div>
+   </section>
+ </main>
 
 <!-- ─── FOOTER ─── -->
 <footer>
