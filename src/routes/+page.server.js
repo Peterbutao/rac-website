@@ -110,8 +110,6 @@ async function fetchAboutTeamImages() {
         alt: imageAltFromFileName(file.name)
       }));
     cachedAboutTeamImagesUntil = now + ABOUT_TEAM_CACHE_MS;
-
-    console.log(`[CAROUSEL] Loaded ${cachedAboutTeamImages.length} team images`);
     return cachedAboutTeamImages;
   } catch (err) {
     console.error('[CAROUSEL] Unexpected error loading images:', err);

@@ -7,7 +7,7 @@
   import { user, member, loading } from '$lib/stores/auth';
   import { createClient } from '$lib/supabase';
   import { generateSEO, generateStructuredData } from '$lib/seo';
-  import { FileText, Users, User, BookOpen, Handshake, Heart, UserPlus, LogIn, Info, Layers } from 'lucide-svelte';
+  import { FileText, Users, User, BookOpen, Handshake, Heart, UserPlus, LogIn, Info, Layers, MoreVertical, File } from 'lucide-svelte';
 
   export let data;
 
@@ -49,6 +49,7 @@
   });
 
   let menuOpen = false;
+  let mobileMenuOpen = false;
   let scrolled = false;
   let committeePromptOpen = true;
   let committeePromptSaving = false;
@@ -73,11 +74,22 @@
     !$member?.committee_onboarding_skipped_at &&
     (data.memberCommitteeIds?.length ?? 0) < 3;
 
+  function handleClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (mobileMenuOpen && !target.closest('.mobile-menu-trigger') && !target.closest('.mobile-dropdown')) {
+      mobileMenuOpen = false;
+    }
+  }
+
   onMount(() => {
+    document.addEventListener('click', handleClickOutside);
     const handler = () => { scrolled = window.scrollY > 60; };
     window.addEventListener('scroll', handler);
     handler();
-    return () => window.removeEventListener('scroll', handler);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('scroll', handler);
+    };
   });
 
 </script>
@@ -152,14 +164,68 @@
         <UserPlus size={15} stroke-width={2.4} />
         <span>Join Us</span>
       </a>
+
+
+      
       {#if $user}
-        <a href="/portal"  class="site-nav__link site-nav__link--cta" on:click={() => menuOpen = false}>My Portal</a>
+      <!-- svelte-ignore a11y_consider_explicit_label -->
+      <a href="/portal"  class="site-nav__link site-nav__link--cta site-nav__link--mobile-auth" style="border-radius: 4rem;" on:click={() => menuOpen = false}>
+        Member Profile
+      </a>
       {:else}
-        <a href="/login"   class="site-nav__link site-nav__link--cta nav-icon-link" style="border-radius: 4rem;" on:click={() => menuOpen = false}>
+      <a href="/login"   class="site-nav__link site-nav__link--cta nav-icon-link site-nav__link--mobile-auth" style="border-radius: 4rem;" on:click={() => menuOpen = false}>
+        <span>Member Login</span>
+      </a>
+      {/if}
+      
+      <!-- 3-dot mobile menu trigger -->
+      <button class="mobile-menu-trigger nav-icon-link" style="border-radius: 4rem;" on:click={() => mobileMenuOpen = !mobileMenuOpen} aria-label="Toggle navigation menu">
+        <MoreVertical size={20} stroke-width={2.4} />
+      </button>
+      
+    </nav>
+
+    <!-- Mobile dropdown menu -->
+    {#if mobileMenuOpen}
+      {#if $user}
+        <a href="/portal" class="mobile-dropdown__link mobile-dropdown__link--cta" on:click={() => mobileMenuOpen = false}>
+          <User size={15} stroke-width={2.4} />
+          <span>Member Profile</span>
+        </a>
+      {:else}
+        <a href="/login" class="mobile-dropdown__link mobile-dropdown__link--cta" on:click={() => mobileMenuOpen = false}>
+          <LogIn size={15} stroke-width={2.4} />
           <span>Member Login</span>
         </a>
       {/if}
-    </nav>
+      <div class="mobile-dropdown" class:navscrolled={scrolled}>
+        <a href="/about" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <Info size={15} stroke-width={2.4} />
+          <span>About</span>
+        </a>
+        <a href="/projects" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <Layers size={15} stroke-width={2.4} />
+          <span>Projects</span>
+        </a>
+        <a href="/partnerships" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <Handshake size={15} stroke-width={2.4} />
+          <span>Partnerships</span>
+        </a>
+        <a href="/donate" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <Heart size={15} stroke-width={2.4} />
+          <span>Donate</span>
+        </a>
+        <a href="/join" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <UserPlus size={15} stroke-width={2.4} />
+          <span>Join Us</span>
+        </a>
+        <a href="/about/constitution" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <File size={15} stroke-width={2.4} />
+          <span>constitution</span>
+        </a>
+      
+      </div>
+    {/if}
 
   </div>
 </header>
@@ -340,7 +406,7 @@
 }
 
 .site-header.scrolled {
-  background: rgba(217, 217, 217, 0.9);
+  background: rgba(217, 217, 217, 0.4);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -437,9 +503,9 @@ main.has-mobile-nav { padding-bottom: 70px; }
   text-decoration: none;
 }
 
-.navscrolled .site-nav__link {
+/* .navscrolled .site-nav__link {
   color: var(--near-black) !important;
-}
+} */
 
 
 .site-nav__link:hover { color: var(--primary); background: var(--cream-mid); }
@@ -636,7 +702,79 @@ main.has-mobile-nav { padding-bottom: 70px; }
   gap: var(--space-3);
 }
 
+/* Mobile menu trigger - hidden on desktop, shown on mobile */
+.mobile-menu-trigger {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  outline: none;
+}
+
+/* Mobile dropdown menu */
+.mobile-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 5vw;
+  background: rgba(26, 26, 26, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  min-width: 220px;
+  z-index: 150;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.mobile-dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  border-radius: var(--radius-sm);
+  transition: all 150ms var(--ease);
+  text-decoration: none;
+}
+
+.mobile-dropdown__link:hover {
+  color: var(--white) !important;
+  background: rgba(232, 23, 93, 0.15);
+}
+
+.mobile-dropdown__link--cta {
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.mobile-dropdown__link--cta:hover {
+  color: var(--gold-light) !important;
+}
+
+.navscrolled .mobile-dropdown {
+  border-color: rgba(0,0,0,0.08);
+}
+
+.navscrolled .mobile-dropdown__link {
+  color: rgba(255,255,255,0.85);
+}
+
 @media (max-width: 768px) {
+  .mobile-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
 
   .mob{
     display: none;
@@ -645,7 +783,18 @@ main.has-mobile-nav { padding-bottom: 70px; }
     padding: 0 20px;
   }
 
-  .site-nav__link--cta { margin-left: 0; }
+  .site-nav__link--cta {
+    margin-left: 0;
+  }
+
+  .site-nav__link--mobile-auth {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
   .portal-header__user .rac-number,
   .portal-header__name { display: none; }
   .committee-prompt { padding: var(--space-6); }

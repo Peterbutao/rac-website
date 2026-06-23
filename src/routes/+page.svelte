@@ -179,7 +179,7 @@
           </div>
           <div class="hero-headline">
             <div>SERVE.</div>
-            <div style="color:{PRIMARY}">FELLOW-</div>
+            <div style="color:{PRIMARY}">FELLOW - </div>
             <div class="headline-row">
               <span>SHIP.</span>
               <span class="headline-cursive">action.</span>
@@ -672,7 +672,7 @@
   .skel-footer-heading { width: 100px; height: 16px; margin-bottom: 6px; }
   .skel-footer-link    { width: 120px; height: 13px; }
 
-  .hero { background-image: url("./logo.png"); background-size: cover; background-position: left; background-repeat: no-repeat; min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; background-color: hsl(0, 0%, 8%); background-blend-mode: multiply; margin-top: -68px; padding-top: 68px; }
+  .hero { background-image: url("./logo.png"); background-size: cover; background-position: left; background-repeat: no-repeat; min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; background-color: #141414fb ; background-blend-mode: multiply; margin-top: -68px; padding-top: 68px; }
   .hero-circle-main { position: absolute; right: -50vw; top: 50%; transform: translateY(-110%); width: 65vw; height: 65vw; border-radius: 50%; background: var(--primary); opacity: .2; z-index: 0; }
   .hero-circle-accent { position: absolute; left: 10vw; bottom: -10vw; width: 30vw; height: 30vw; border-radius: 50%; border: 3px solid var(--primary); opacity: .15; z-index: 0; }
   .hero-wrapper { max-width: 1200px; margin: 0 auto; width: 100%; padding: 120px 5vw 80px; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; }

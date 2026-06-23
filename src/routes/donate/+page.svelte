@@ -450,12 +450,6 @@
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
   }
-
-  .impact-icon {
-    color: var(--primary);
-    margin-bottom: 20px;
-  }
-
   .impact-num {
     display: block;
     color: rgba(232, 23, 93, .5);
@@ -646,10 +640,6 @@
   }
 
   .form-input.error,
-  .form-textarea.error {
-    border-color: var(--error);
-  }
-
   .form-textarea {
     min-height: 120px;
     resize: vertical;

@@ -112,55 +112,6 @@
   .skel-desc.short { width: 65%; }
   .skel-impact { width: 90px; height: 32px; margin-top: 16px; }
 
-  /* Navbar */
-
-  /* Hero */
-  .projects-hero {
-    background: var(--near-black);
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 120px 5vw 80px;
-  }
-  .hero-blob-1 {
-    position: absolute; right: -20vw; top: -20vw;
-    width: 50vw; height: 50vw; border-radius: 50%;
-    background: var(--primary); opacity: .15;
-    pointer-events: none;
-  }
-  .hero-blob-2 {
-    position: absolute; left: 20vw; bottom: -10vw;
-    width: 30vw; height: 30vw; border-radius: 50%;
-    border: 3px solid var(--primary); opacity: .1;
-    pointer-events: none;
-  }
-  .hero-content {
-    max-width: 800px;
-    position: relative; z-index: 1;
-    text-align: center;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(232,23,93,.2); border: 1px solid rgba(232,23,93,.4);
-    color: var(--primary); font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px; font-weight: 700; letter-spacing: 2px;
-    padding: 6px 16px; border-radius: 100px; margin-bottom: 32px;
-  }
-  .hero-title {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(48px, 8vw, 80px); color: white;
-    line-height: .95; margin-bottom: 24px; letter-spacing: -1px;
-  }
-  .hero-accent { color: var(--primary); }
-  .hero-sub {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px;
-    color: rgba(255,255,255,.7); line-height: 1.7; max-width: 600px;
-    margin: 0 auto;
-  }
-
   /* Projects Section */
   .projects-section {
     padding: 80px 5vw;
@@ -264,15 +215,7 @@
     transition: transform .2s;
   }
   .btn-primary:hover { transform: translateY(-2px); }
-  .btn-outline {
-    border: 2px solid rgba(255,255,255,.4); color: white;
-    padding: 14px 36px; border-radius: 100px;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
-    font-weight: 700; text-decoration: none;
-    transition: border-color .2s;
-  }
-  .btn-outline:hover { border-color: white; }
-
+ 
   /* Footer */
   footer {
     background: var(--near-black);
@@ -303,7 +246,5 @@
 
   @media (max-width: 768px) {
     .projects-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: 36px; }
-    .section-title { font-size: 36px; }
   }
 </style>

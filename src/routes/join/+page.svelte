@@ -312,26 +312,6 @@
 
   .hero-copy { max-width: 760px; }
 
-  .section-pill {
-    display: inline-flex;
-    width: fit-content;
-    background: rgba(232, 23, 93, .1);
-    color: var(--primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    padding: 5px 14px;
-    border-radius: 100px;
-    margin-bottom: 22px;
-    text-transform: uppercase;
-  }
-
-  .section-pill.dark {
-    background: rgba(232, 23, 93, .18);
-    border: 1px solid rgba(232, 23, 93, .42);
-  }
-
   h1, h2 {
     font-family: 'Anton', sans-serif;
     letter-spacing: 0;
@@ -606,16 +586,6 @@
   }
 
   .cta-note { max-width: 640px; }
-
-  .cta-note .section-pill {
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.3);
-    color: white;
-  }
-
-  .cta-note h2, .cta-note p { color: white; }
-
-  .cta-note h2 { font-size: clamp(32px, 4vw, 48px); }
 
   .cta-note p {
     color: rgba(255,255,255,.78);

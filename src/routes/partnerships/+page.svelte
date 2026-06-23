@@ -408,11 +408,6 @@
     box-shadow: var(--shadow-md);
   }
 
-  .info-card__icon {
-    color: var(--primary);
-    margin-bottom: 24px;
-  }
-
   .info-card__num {
     display: block;
     color: rgba(232, 23, 93, .5);
