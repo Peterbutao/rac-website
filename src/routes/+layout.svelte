@@ -187,17 +187,7 @@
 
     <!-- Mobile dropdown menu -->
     {#if mobileMenuOpen}
-      {#if $user}
-        <a href="/portal" class="mobile-dropdown__link mobile-dropdown__link--cta" on:click={() => mobileMenuOpen = false}>
-          <User size={15} stroke-width={2.4} />
-          <span>Member Profile</span>
-        </a>
-      {:else}
-        <a href="/login" class="mobile-dropdown__link mobile-dropdown__link--cta" on:click={() => mobileMenuOpen = false}>
-          <LogIn size={15} stroke-width={2.4} />
-          <span>Member Login</span>
-        </a>
-      {/if}
+
       <div class="mobile-dropdown" class:navscrolled={scrolled}>
         <a href="/about" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
           <Info size={15} stroke-width={2.4} />
