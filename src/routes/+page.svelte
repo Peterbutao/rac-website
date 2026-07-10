@@ -179,9 +179,9 @@
           </div>
           <div class="hero-headline">
             <div>SERVE.</div>
-            <div style="color:{PRIMARY}">FELLOW - </div>
+            <div class="hero-headline-word" style="color:{PRIMARY}">FELLOWSHIP</div>
             <div class="headline-row">
-              <span>SHIP.</span>
+              <!-- <span>SHIP.</span> -->
               <span class="headline-cursive">action.</span>
             </div>
           </div>
@@ -688,6 +688,7 @@
   .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); display: inline-block; animation: pulse 2s infinite; }
   .badge-text { font-family: var(--font-jakarta); font-size: 11px; font-weight: 700; color: rgba(255,255,255,.8); letter-spacing: 1.5px; }
   .hero-headline { font-family: var(--font-display); font-size: clamp(60px, 9vw, 120px); color: white; line-height: .9; margin-bottom: 28px; }
+  .hero-headline-word { font-size: clamp(3rem, 8vw, 6.5rem); line-height: 0.95; max-width: 100%; overflow-wrap: anywhere; }
   .headline-row { display: flex; align-items: baseline; gap: 16px; }
   .headline-cursive { font-family: var(--font-cursive); font-size: clamp(44px, 7vw, 90px); color: var(--orange); }
   .hero-sub { font-family: var(--font-jakarta); font-size: 16px; color: rgba(255,255,255,.7); line-height: 1.7; max-width: 480px; margin-bottom: 40px; }
