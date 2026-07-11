@@ -617,7 +617,7 @@
           <div>
             <div class="footer-col-heading">{heading}</div>
             {#each links as link}
-              <a href="{link}" class="footer-link">{link}</a>
+              <a href="{link}" class="footer-link" style="text-transform: uppercase;">{link}</a>
             {/each}
           </div>
         {/each}
