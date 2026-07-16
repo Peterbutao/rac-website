@@ -155,8 +155,16 @@
         <a class="constitution-link" href="/about/constitution">
           <FileText size={20} stroke-width={2.2} />
           <span>
-            <strong>Club Constitution &amp; By-Laws</strong>
+            <strong>Club Constitution & By-Laws</strong>
             <small>Read the governance document for membership, meetings, officers, and committees.</small>
+          </span>
+          <ArrowRight size={16} stroke-width={2.4} />
+        </a>
+        <a class="constitution-link" href="/about/reports">
+          <FileText size={20} stroke-width={2.2} />
+          <span>
+            <strong>Annual Activity Reports</strong>
+            <small>Browse annual reports by Rotary year covering projects, membership, and achievements.</small>
           </span>
           <ArrowRight size={16} stroke-width={2.4} />
         </a>

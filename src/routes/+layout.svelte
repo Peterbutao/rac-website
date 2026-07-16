@@ -59,6 +59,7 @@
 
   $: isPortal = $page.url.pathname.startsWith('/portal') || $page.url.pathname.startsWith('/admin');
   $: isAdmin  = $member?.is_admin ?? false;
+  $: isInductionPage = $page.url.pathname === '/about/11th-induction';
   $: if (data.member?.id !== selectedCommitteeMemberId) {
     selectedCommitteeMemberId = data.member?.id ?? null;
     selectedCommitteeIds = (data.memberCommitteeIds ?? []).map((id: number) => String(id));
@@ -144,6 +145,7 @@
     </a>
 
     <nav class="site-nav" class:navscrolled={scrolled}>
+      {#if !isInductionPage}
       <a href="/about"    class="mob site-nav__link nav-icon-link" on:click={() => menuOpen = false}>
         <Info size={15} stroke-width={2.4} />
         <span>About</span>
@@ -164,9 +166,9 @@
         <UserPlus size={15} stroke-width={2.4} />
         <span>Join Us</span>
       </a>
+      {/if}
 
-
-      
+      {#if !isInductionPage}
       {#if $user}
       <!-- svelte-ignore a11y_consider_explicit_label -->
       <a href="/portal"  class="site-nav__link site-nav__link--cta site-nav__link--mobile-auth" style="border-radius: 4rem;" on:click={() => menuOpen = false}>
@@ -182,6 +184,7 @@
       <button class="mobile-menu-trigger nav-icon-link" style="border-radius: 4rem;" on:click={() => mobileMenuOpen = !mobileMenuOpen} aria-label="Toggle navigation menu">
         <MoreVertical size={20} stroke-width={2.4} />
       </button>
+      {/if}
       
     </nav>
 
@@ -189,6 +192,7 @@
     {#if mobileMenuOpen}
 
       <div class="mobile-dropdown" class:navscrolled={scrolled}>
+        {#if !isInductionPage}
         <a href="/about" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
           <Info size={15} stroke-width={2.4} />
           <span>About</span>
@@ -211,9 +215,14 @@
         </a>
         <a href="/about/constitution" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
           <File size={15} stroke-width={2.4} />
-          <span>constitution</span>
+          <span>Constitution</span>
         </a>
-      
+        <a href="/about/reports" class="mobile-dropdown__link" on:click={() => mobileMenuOpen = false}>
+          <File size={15} stroke-width={2.4} />
+          <span>Annual Report</span>
+        </a>
+        {/if}
+       
       </div>
     {/if}
 
