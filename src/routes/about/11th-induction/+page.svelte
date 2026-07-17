@@ -48,7 +48,12 @@
     { id:"project-2", quarter:"Q1", title:"Financial Literacy Info Session",
       desc:"Guest speakers from the Rotary Club of Lingadzi led an interactive session on budgeting, saving, investing and debt management.",
       impact:"Over 25 young adults equipped with practical skills for informed financial decisions.",
-      images:["/PROJECTS/projects-(3).jpg","/PROJECTS/projects-(4).jpg"],
+      images:[
+        "/PROJECTS/financiallit-1.jpg",
+        "/PROJECTS/financiallit-2.jpg",
+        "/PROJECTS/financiallit-3.jpg",
+        "/PROJECTS/financiallit-4.jpg"
+      ],
       details:{
         date:"Saturday, 28th September 2025",
         venue:"Crossroads Hotel, Off Kamuzu Procession Road",
@@ -74,7 +79,11 @@
     { id:"project-4", quarter:"Q1", title:"Climate Justice Workshop",
       desc:"Delivered with the SEED Program Spire (Norway–Malawi), pairing Malawian and Norwegian facilitators to connect global climate policy with local, on-the-ground realities.",
       impact:"Raised awareness among 22 members on the ethical dimensions of environmentalism.",
-      images:["/PROJECTS/projects-(7).jpg","/PROJECTS/projects-(8).jpg"],
+      images:[
+        "/PROJECTS/climate-1.jpg",
+        "/PROJECTS/climate-2.jpg",
+        "/PROJECTS/climate-3.jpg",
+        "/PROJECTS/climate-4.jpg"],
       details:{
         date:"Saturday, 12th October 2025",
         venue:"Crossroads Hotel, Off Kamuzu Procession Road",
@@ -219,7 +228,12 @@
       desc:"Donated bins, hand wash, gloves and other sanitation supplies to improve hygiene standards for patients and staff.",
       impact:"Reduced infection risk and improved conditions for safer healthcare delivery.",
       note:"Planned as an ongoing initiative — the club is now raising funds to address gaps in mattresses and sterilisation equipment at the facility.",
-      images:["/PROJECTS/projects-(27).jpg","/PROJECTS/projects-(28).jpg"],
+      images:[
+        "/PROJECTS/chadzahealth-1.jpg",
+        "/PROJECTS/chadzahealth-2.jpg",
+        "/PROJECTS/chadzahealth-3.jpg",
+        "/PROJECTS/chadzahealth-4.jpg"
+      ],
       details:{
         date:"Saturday, 21st March 2026",
         venue:"Chadza Health Centre (Donation Site)",
@@ -235,7 +249,7 @@
     { id:"project-15", quarter:"Q4", title:"The Rotaract Trail Escape",
       desc:"A fellowship and fitness outing at Lilongwe Wildlife Centre and Kuwala Gardens, featuring a guided nature walk and social bonding.",
       impact:"Strengthened teamwork and club unity through outdoor recreation.",
-      images:["/PROJECTS/projects-(29).jpg","/PROJECTS/projects-(30).jpg"],
+      images:["/PROJECTS/trail-2.jpg","/PROJECTS/trail-4.jpg","/PROJECTS/trail-3.jpg","/PROJECTS/trail-1.jpg"],
       details:{
         date:"Saturday, 18th April 2026",
         venue:"Lilongwe Wildlife Centre and Kuwala Gardens, Lilongwe",
@@ -248,7 +262,12 @@
     { id:"project-16", quarter:"Q4", title:"District 9210 — The Umodzi DISCON 2026",
       desc:"Rotaractors and Rotarians from Malawi, Zambia, Zimbabwe and Mozambique gathered under the theme \u201CUnite for Good\u201D for leadership development and celebration of service.",
       impact:"Club honoured with Best Performing Club in Malawi, Best Storytelling & Media, Best Social Media Presence, and individual awards for President Timothy Sikelo and IPP Violet Odala.",
-      images:["/PROJECTS/projects-(31).jpg","/PROJECTS/projects-(32).jpg"],
+      images:[
+        "/PROJECTS/discon26-1.jpg",
+        "/PROJECTS/discon26-2.jpg",
+        "/PROJECTS/discon26-3.jpg",
+        "/PROJECTS/discon26-4.jpg"
+      ],
       details:{
         date:"29th April to 3rd May 2026",
         venue:"Sunbird Waterfront Salima, Malawi",
@@ -295,7 +314,7 @@
       desc:"With the Mutisunge Initiative, selected girls were trained as peer educators in making reusable sanitary pads, to later train classmates at Mkwichi Secondary School.",
       impact:"Built practical vocational skills and a peer-learning model for lasting menstrual health support.",
       note:"Some peer educators needed more time to master the technique — highlighting the value of planned follow-up mentorship.",
-      images:["/PROJECTS/projects-(35).jpg"],
+      images:["/PROJECTS/reusablepads-2.jpg","/PROJECTS/reusablepads-1.jpg","/PROJECTS/reusablepads-3.jpg","/PROJECTS/reusablepads-4.jpg"],
       details:{
         date:"Saturday, 16th November 2025",
         venue:"Mkwichi Secondary School",
@@ -309,7 +328,7 @@
     { id:"project-19", quarter:"Q4", title:"Game Day Fundraiser",
       desc:"With the Lilongwe Leo Club, a full day of board games, face painting, tug of war, karaoke and vendor stalls in support of Children of the Nations (COTN).",
       impact:"Raised funds for COTN while strengthening community relationships and youth engagement.",
-      images:["/PROJECTS/projects-(36).jpg"],
+      images:["/PROJECTS/gundayfundraiser-1.jpg","/PROJECTS/gundayfundraiser-4.jpg","/PROJECTS/gundayfundraiser-2.jpg","/PROJECTS/gundayfundraiser-3.jpg"],
       details:{
         date:"Saturday, 06th June 2026",
         venue:"YGK Garden, Area 6",
@@ -334,7 +353,7 @@
     { id:"project-20", quarter:"Q4", title:"A Visit to Children of the Nations",
       desc:"Members donated food, school materials, toiletries and clothing for children aged 1\u201318, alongside interaction and motivational sessions.",
       impact:"Improved daily living conditions for the children and boosted their confidence and sense of belonging.",
-      images:["/PROJECTS/projects-(27).jpg","/PROJECTS/projects-(28).jpg"],
+      images:["/PROJECTS/childrenofthenation-4.jpg","/PROJECTS/childrenofthenation-3.jpg","/PROJECTS/childrenofthenation-2.jpg","/PROJECTS/childrenofthenation-1.jpg"],
       details:{
         date:"Saturday, 20 June 2026",
         venue:"Children of the Nations",
