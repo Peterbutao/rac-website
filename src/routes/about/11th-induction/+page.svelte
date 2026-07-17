@@ -264,8 +264,21 @@
 
 <footer class="induction-footer">
   <div class="fh script" style="font-size:1.6rem;">Uniting for Good</div>
+  <div class="footer-cta">
+    <a href="/join" class="footer-join-btn">Join Rotaract Club of Lilongwe →</a>
+  </div>
   <div>Rotaract Club of Lilongwe &middot; District 9210 &middot; Malawi</div>
-  <div class="handles">Instagram · TikTok · Facebook · X &nbsp;—&nbsp; @RotaractLilongwe</div>
+  <div class="handles">
+    <a href="https://instagram.com/RotaractLilongwe" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+    <span class="handle-sep">·</span>
+    <a href="https://tiktok.com/@RotaractLilongwe" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
+    <span class="handle-sep">·</span>
+    <a href="https://facebook.com/RotaractLilongwe" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+    <span class="handle-sep">·</span>
+    <a href="https://x.com/RotaractLilongwe" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">X</a>
+    <span class="handle-sep">&nbsp;—&nbsp;</span>
+    @RotaractLilongwe
+  </div>
 </footer>
 
 </div>
@@ -649,7 +662,27 @@
     font-family:'Alex Brush',cursive;color:var(--pink);
     font-size:1.6rem;margin-bottom:6px;
   }
+  .footer-cta{margin:16px 0;}
+  .footer-join-btn{
+    display:inline-block;
+    background:var(--pink);
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:.9rem;
+    padding:12px 28px;
+    text-decoration:none;
+    transition:background .2s;
+  }
+  .footer-join-btn:hover{background:var(--pink-deep);}
   .induction-footer .handles{margin-top:10px;letter-spacing:.05em;font-size:.75rem;}
+  .induction-footer .handles a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    transition:color .2s;
+  }
+  .induction-footer .handles a:hover{color:var(--pink);}
+  .handle-sep{color:var(--line);}
 
   @media (max-width:480px){
     .hero-card{padding:32px 18px 26px;}

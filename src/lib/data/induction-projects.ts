@@ -93,24 +93,24 @@ export const projects: Project[] = [
       ]
     }
   },
-  { id:"project-5", quarter:"Q1", title:"Rotary Youth Leadership Awards (RYLA) 2025",
-    desc:"Fourteen members attended this four-day regional programme, themed \u201CUnite, Uplift & Unleash Potential,\u201D covering leadership, entrepreneurship, wellness and networking with peers from four countries.",
-    impact:"Members returned with sharpened leadership skills and a broader regional network.",
-    images:["/PROJECTS/projects-(9).jpg","/PROJECTS/projects-(10).jpg"],
-    details:{
-      date:"September 4\u20137, 2025",
-      venue:"Mufasa Eco Lodge, Mangochi, Malawi",
-      objective:"Leadership Development & District Engagement",
-      fullDescription:"The Rotaract Club of Lilongwe was proud to participate and send 14 of its most dedicated and promising members to this prestigious regional event. The intensive, four-day program themed 'Unite, Uplift & Unleash Potential' was designed to empower young leaders. Our members participated in leadership training focused on advanced communication, teamwork, and problem-solving skills; financial literacy and entrepreneurship sessions; health and wellness discussions; and team-building and networking activities including bonfires, talent nights, and outdoor excursions like boat cruises, which facilitated deep connections with young leaders from Malawi, Zambia, Zimbabwe, and Mozambique.",
-      fullImpact:"The attendees returned with enhanced leadership capabilities, a broader network, and a renewed sense of purpose. They are now integrating their learnings into club projects, thereby multiplying the impact of RYLA within our community.",
-      highlights:[
-        "Leadership Training: Advanced communication, teamwork, and problem-solving skills",
-        "Financial Literacy & Entrepreneurship: Fostering innovation and business acumen",
-        "Health and Wellness: Mental health and personal wellbeing discussions",
-        "Team-Building & Networking: Connections with leaders from 4 countries"
-      ]
-    }
-  },
+//   { id:"project-5", quarter:"Q1", title:"Rotary Youth Leadership Awards (RYLA) 2025",
+//     desc:"Fourteen members attended this four-day regional programme, themed \u201CUnite, Uplift & Unleash Potential,\u201D covering leadership, entrepreneurship, wellness and networking with peers from four countries.",
+//     impact:"Members returned with sharpened leadership skills and a broader regional network.",
+//     images:["/PROJECTS/projects-(9).jpg","/PROJECTS/projects-(10).jpg"],
+//     details:{
+//       date:"September 4\u20137, 2025",
+//       venue:"Mufasa Eco Lodge, Mangochi, Malawi",
+//       objective:"Leadership Development & District Engagement",
+//       fullDescription:"The Rotaract Club of Lilongwe was proud to participate and send 14 of its most dedicated and promising members to this prestigious regional event. The intensive, four-day program themed 'Unite, Uplift & Unleash Potential' was designed to empower young leaders. Our members participated in leadership training focused on advanced communication, teamwork, and problem-solving skills; financial literacy and entrepreneurship sessions; health and wellness discussions; and team-building and networking activities including bonfires, talent nights, and outdoor excursions like boat cruises, which facilitated deep connections with young leaders from Malawi, Zambia, Zimbabwe, and Mozambique.",
+//       fullImpact:"The attendees returned with enhanced leadership capabilities, a broader network, and a renewed sense of purpose. They are now integrating their learnings into club projects, thereby multiplying the impact of RYLA within our community.",
+//       highlights:[
+//         "Leadership Training: Advanced communication, teamwork, and problem-solving skills",
+//         "Financial Literacy & Entrepreneurship: Fostering innovation and business acumen",
+//         "Health and Wellness: Mental health and personal wellbeing discussions",
+//         "Team-Building & Networking: Connections with leaders from 4 countries"
+//       ]
+//     }
+//   },
 
   // ---------------- Q2: OCTOBER – DECEMBER 2025 ----------------
   { id:"project-6", quarter:"Q2", title:"End Polio Awareness Walk/Run",
@@ -157,19 +157,19 @@ export const projects: Project[] = [
       fullImpact:"The induction strengthened the club by officially welcoming new active members. It enhanced their understanding of Rotary and Rotaract principles, inspired active participation in service projects, and raised a sense of belonging and commitment to the club's mission of service above self."
     }
   },
-  { id:"project-9", quarter:"Q2", title:"Fundraising Activity at Family Fun Day",
-    desc:"A resource mobilisation drive held during the Family Fun Day to sustain club projects and operations.",
-    impact:"Strengthened the club\u2019s financial capacity to run ongoing and future service projects.",
-    images:["/PROJECTS/projects-(17).jpg","/PROJECTS/projects-(18).jpg"],
-    details:{
-      date:"Saturday, 29 November 2025",
-      venue:"Crossroads Hotel, Off Kamuzu Procession Road",
-      time:"14:00 \u2013 16:00 hrs",
-      objective:"Club Resource Mobilization",
-      fullDescription:"The club conducted a successful fundraising initiative during the Family Fun Day. The purpose of this effort was to mobilize financial resources to strengthen and sustain the club's community projects and administrative functions.",
-      fullImpact:"The initiative successfully contributed towards resource mobilization for the club, strengthening its ability to implement ongoing and future service projects. It also enhanced community engagement and participation in supporting the club's mission."
-    }
-  },
+//   { id:"project-9", quarter:"Q2", title:"Fundraising Activity at Family Fun Day",
+//     desc:"A resource mobilisation drive held during the Family Fun Day to sustain club projects and operations.",
+//     impact:"Strengthened the club\u2019s financial capacity to run ongoing and future service projects.",
+//     images:["/PROJECTS/projects-(17).jpg","/PROJECTS/projects-(18).jpg"],
+//     details:{
+//       date:"Saturday, 29 November 2025",
+//       venue:"Crossroads Hotel, Off Kamuzu Procession Road",
+//       time:"14:00 \u2013 16:00 hrs",
+//       objective:"Club Resource Mobilization",
+//       fullDescription:"The club conducted a successful fundraising initiative during the Family Fun Day. The purpose of this effort was to mobilize financial resources to strengthen and sustain the club's community projects and administrative functions.",
+//       fullImpact:"The initiative successfully contributed towards resource mobilization for the club, strengthening its ability to implement ongoing and future service projects. It also enhanced community engagement and participation in supporting the club's mission."
+//     }
+//   },
   { id:"project-10", quarter:"Q2", title:"Operation Secret Santa",
     desc:"A festive fellowship event closing the calendar year with a Secret Santa gift exchange among members.",
     impact:"Boosted member morale, unity and a stronger sense of belonging.",
@@ -293,7 +293,10 @@ export const projects: Project[] = [
   { id:"project-17", quarter:"Q4", title:"Rotary Youth Leadership Awards \u2014 RYLA MOZ 2026",
     desc:"Five delegates joined this four-day programme themed \u201CLearn, Lead, Impact,\u201D covering ethical leadership, personal finance and social innovation.",
     impact:"Members returned with new tools now being integrated into club projects.",
-    images:["/PROJECTS/projects-(33).jpg","/PROJECTS/projects-(34).jpg"],
+    images:[
+        "/PROJECTS/ryla26-2.jpg",
+        "/PROJECTS/ryla26-1.jpg"
+    ],
     details:{
       date:"Sunday, 25th to 28th June 2026",
       venue:"Moringa Bay, Tete, Mozambique",
