@@ -134,7 +134,12 @@
     { id:"project-7", quarter:"Q2", title:"Job Hunting & CV Building Skills Info Session",
       desc:"Facilitated by Eveline Sibindi Van Dam of the Rotary Club of Lingadzi, covering CV writing, job applications and interview skills.",
       impact:"Boosted participants' confidence and readiness for a competitive job market.",
-      images:["/PROJECTS/projects-(13).jpg","/PROJECTS/projects-(14).jpg"],
+      images:[
+        "/PROJECTS/jobcv-1.jpg",
+        "/PROJECTS/jobcv-2.jpg",
+        "/PROJECTS/jobcv-3.jpg",
+        "/PROJECTS/jobcv-4.jpg"
+      ],
       details:{
         date:"Sunday, 26th October 2025",
         venue:"Crossroads Hotel, Off Kamuzu Procession Road",
@@ -188,7 +193,7 @@
     { id:"project-11", quarter:"Q3", title:"Rotary Foundation Info Session",
       desc:"Rtn. Jay Chikoya walked members through the Foundation's mission, funding mechanisms and grant opportunities across Rotary's Areas of Focus.",
       impact:"Deepened members' understanding of how Foundation grants translate into community impact.",
-      images:["/PROJECTS/projects-(21).jpg","/PROJECTS/projects-(22).jpg"],
+      images:["/PROJECTS/infosession-1.jpg"],
       details:{
         date:"Saturday, 25th January 2026",
         venue:"Crossroads Hotel, Off Kamuzu Procession Road",
@@ -214,7 +219,7 @@
     { id:"project-13", quarter:"Q3", title:"Rotary Refresher Info Session",
       desc:"Facilitated by Rtn. Mvaiwa Chigaru and Rtn. Simon Musopole, revisiting Rotary's values, structure and avenues for service.",
       impact:"Renewed members' sense of purpose and leadership capacity.",
-      images:["/PROJECTS/projects-(25).jpg","/PROJECTS/projects-(26).jpg"],
+      images:["/PROJECTS/infosession.jpg"],
       details:{
         date:"22 February 2026",
         venue:"Crossroads Hotel, Off Kamuzu Procession Road",
@@ -498,20 +503,21 @@
   <div class="hero-card">
     <div class="impact-tag">Create Lasting Impact</div>
     <div style="height:16px;"></div>
-    <div class="hero-title">The 11th Presidential Induction Affair</div>
-    <div class="hero-sub">Project Showcase</div>
+    <div class="hero-title">Welcome To The 11th Presidential Induction Affair</div>
+    <div class="hero-sub">Year In Review</div>
     <p class="hero-desc">
-      Twenty-one projects, four quarters, one club united for good. Relive those projects here,
-      in pictures.
+      From service projects and fellowships to socials, trainings, and celebrations—relive the moments that made the 2025–2026 Rotary Year unforgettable
     </p>
     <div class="hero-meta">
       <div class="hero-image">
         <img src="/bg.png" alt="club members" />
       </div>
-      <div><b>2025 – 2026</b>Rotary Year</div>
-      <div><b>21</b>Projects Delivered</div>
+      
+      <div><b>21</b>Signature Moments.</div>
     </div>
-    <div class="hero-count"> ↓</div>
+    <div class="hero-count"> 
+      <div>2025 – 2026 Rotary Year</div>
+    </div>
   </div>
 </div>
 
@@ -946,7 +952,9 @@
   }
   .hero-meta b{display:block;color:var(--ink);font-size:.95rem;font-family:'Poppins',sans-serif;font-weight:700;}
   .hero-count{
-    font-size:.85rem;
+    font-size:.7rem;
+    text-decoration: wavy;
+    font-style: italic;
     color:var(--olive);
     letter-spacing:.05em;
   }
