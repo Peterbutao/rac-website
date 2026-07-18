@@ -8,6 +8,7 @@
   let carouselStates: Record<string, number> = {};
   let selectedProject: Project | null = null;
   let modalImageIndex = 0;
+  let programmeModalOpen = false;
   let tensDigit = 0;
   let onesDigit = 0;
   let counterStarted = false;
@@ -16,6 +17,28 @@
   const DURATION = 1800; // ms
   const TENS_START = 9; // counts down from 9
   const ONES_START = 0; // counts up from 0
+
+  const programmeSchedule = [
+    { time: '10:30 – 11:00', activity: 'Guest Arrival & Registration', lead: 'Registration Committee Rtr Precious and Rtr Lusungu Wowa' },
+    { time: '11:00 – 11:05', activity: 'Rotary Grace / Opening Prayer 4 way Test', lead: 'Assigned Rotaractor' },
+    { time: '11:05 – 11:15', activity: 'Welcome Remarks & Recognition of Guests', lead: 'Master of Ceremonies (Prince)' },
+    { time: '11:05 – 11:20', activity: 'Ice breakers', lead: 'Rtr Michael Tembo' },
+    { time: '11:20 – 11:30', activity: "President's Address (2025/26)", lead: 'IPP Timothy Sikelo' },
+    { time: '11:30 – 11:35', activity: '25/26 Board Appreciation', lead: 'IPP Timothy Sikelo' },
+    { time: '11:35 – 11:40', activity: 'Presidential Induction', lead: 'IPP Timothy Sikelo' },
+    { time: '11:40 – 11:55', activity: 'Acceptance Speech', lead: 'PE Menia Chaphamtengo' },
+    { time: '11:55 – 12:15', activity: 'Board Member Induction', lead: 'President Menia' },
+    { time: '12:15 – 12:20', activity: 'Toast to the New Board', lead: 'Designated Toastmaster' },
+    { time: '12:20 – 12:30', activity: 'New Board then Group Photograph (Everyone in attendance)', lead: 'Photographer' },
+    { time: '12:30 – 12:45', activity: 'Address from Guest of Honour', lead: 'President Tendai' },
+    { time: '12:45 – 13:15', activity: 'Lunch Served', lead: 'All Guests' },
+    { time: '13:15 – 13:40', activity: 'Raffle Draw', lead: 'Rtr Wedson Kumwenda and team' },
+    { time: '13:40 – 13:55', activity: 'Award Ceremony', lead: 'IPP Timothy' },
+    { time: '13:55 – 14:05', activity: 'Vote of Thanks', lead: 'Club Secretary' },
+    { time: '14:05 – 14:25', activity: 'Happy Kwacha & Fines', lead: 'Prince Mthikira' },
+    { time: '14:25 – 14:30', activity: 'Royal Toast', lead: 'President Menia' },
+    { time: '14:30 -', activity: 'Fellowship, Debates, Music, fun', lead: 'All' },
+  ];
 
   // Lazy-loaded modal component
   let ProjectModal: any = null;
@@ -73,7 +96,10 @@
   }
 
   function handleKeydown(e: KeyboardEvent) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      programmeModalOpen = false;
+    }
   }
 
   function animateCounter() {
@@ -187,7 +213,13 @@
       <div>2025 – 2026 Rotary Year</div>
     </div>
   </div>
+  <div class="event">
+    <button class="event-btn" on:click={() => programmeModalOpen = true} aria-label="View event programme">
+      <h1>event programme</h1>
+    </button>
+  </div>
 </div>
+
 
 <div class="swatch-strip">
   <span class="sw-sage"></span><span class="sw-olive"></span><span class="sw-olive2"></span>
@@ -286,6 +318,36 @@
 <!-- Lazy-loaded Modal -->
 {#if selectedProject && ProjectModal}
   <svelte:component this={ProjectModal} bind:selectedProject bind:modalImageIndex />
+{/if}
+
+<!-- Programme Modal -->
+{#if programmeModalOpen}
+  <div class="modal-overlay" on:click={() => programmeModalOpen = false} on:keydown={(e) => e.key === 'Escape' && (programmeModalOpen = false)} role="button" tabindex="0">
+    <div class="modal-content" on:click={(e) => e.stopPropagation()}>
+      <button class="modal-close" on:click={() => programmeModalOpen = false} aria-label="Close modal">✕</button>
+      <h2>Programme of Events</h2>
+      <div class="table-wrapper">
+        <table class="programme-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Activity</th>
+              <th>Lead</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each programmeSchedule as item}
+              <tr>
+                <td class="time">{item.time}</td>
+                <td class="activity">{item.activity}</td>
+                <td class="lead">{item.lead}</td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 {/if}
 
 <style>
@@ -684,8 +746,175 @@
   .induction-footer .handles a:hover{color:var(--pink);}
   .handle-sep{color:var(--line);}
 
+  /* Event Programme */
+  .event{
+    text-align:center;
+    padding:20px 16px;
+  }
+  .event-btn{
+    background:var(--pink);
+    border:none;
+    cursor:pointer;
+    padding:5px 40px;
+    font-family:inherit;
+    position:relative;
+    border-radius:16rem;
+    animation:pulse 2s ease-in-out infinite;
+    transition:transform .2s ease;
+    filter:drop-shadow(0 0 20px rgba(221, 154, 59, 0.5)) drop-shadow(0 0 40px rgba(221, 154, 59, 0.3));
+  }
+  .event-btn:hover{
+    transform:scale(1.05);
+    animation:none;
+    filter:drop-shadow(0 0 10px rgba(221, 154, 59, 0.3));
+  }
+  .event-btn h1{
+    font-size:clamp(1.8rem, 5vw, 2.6rem);
+    color:#fff;
+    font-family:'Alex Brush',cursive;
+    font-weight:400;
+    margin:0;
+  }
+  .event-hint{
+    display:inline-block;
+    font-size:.8rem;
+    color:#fff;
+    margin-top:6px;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .event-btn:hover .event-hint{
+    opacity:1;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(221, 154, 59, 0.6), inset 0 0 170px rgba(221, 154, 59, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 0 15px rgba(221, 154, 59, 0), inset 0 0 190px rgba(221, 154, 59, 0.2);
+    }
+  }
+
+  /* Modal Overlay */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    animation:fadeIn .2s ease;
+  }
+  .modal-content{
+    background:var(--card);
+    border-radius:0;
+    padding:40px 30px;
+    max-width:900px;
+    max-height:85vh;
+    overflow-y:auto;
+    position:relative;
+    box-shadow:0 40px 80px rgba(0,0,0,.3);
+    animation:slideUp .3s ease;
+  }
+  .modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    background:none;
+    border:none;
+    font-size:1.8rem;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:color .2s;
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .modal-close:hover{
+    color:var(--pink);
+  }
+  .modal-content h2{
+    font-size:1.8rem;
+    color:var(--pink-deep);
+    margin-bottom:24px;
+    margin-top:0;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    font-weight:700;
+  }
+  .table-wrapper{
+    overflow-x:auto;
+  }
+  .programme-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.9rem;
+  }
+  .programme-table thead{
+    background:var(--sand);
+  }
+  .programme-table th{
+    padding:12px;
+    text-align:left;
+    font-weight:700;
+    color:var(--ink);
+    border-bottom:2px solid var(--pink);
+    font-family:'Montserrat',sans-serif;
+  }
+  .programme-table td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .programme-table tbody tr:hover{
+    background:rgba(196,39,107,.05);
+  }
+  .programme-table .time{
+    font-weight:600;
+    color:var(--pink);
+    white-space:nowrap;
+    min-width:100px;
+  }
+  .programme-table .activity{
+    font-weight:600;
+    color:var(--ink);
+  }
+  .programme-table .lead{
+    font-size:.85rem;
+  }
+
+  @keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+  }
+  @keyframes slideUp{
+    from{
+      opacity:0;
+      transform:translateY(30px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
   @media (max-width:480px){
     .hero-card{padding:32px 18px 26px;}
     .hero-meta{gap:2px;padding:0;}
+    .modal-content{
+      padding:24px 16px;
+      margin:16px;
+      max-height:90vh;
+    }
+    .programme-table{
+      font-size:.8rem;
+    }
+    .programme-table th,.programme-table td{
+      padding:8px;
+    }
   }
 </style>
