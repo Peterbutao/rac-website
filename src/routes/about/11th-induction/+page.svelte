@@ -752,7 +752,7 @@
     padding:20px 16px;
   }
   .event-btn{
-    background:var(--pink);
+    background:var(--cream-deep);
     border:none;
     cursor:pointer;
     padding:5px 40px;
@@ -770,9 +770,9 @@
   }
   .event-btn h1{
     font-size:clamp(1.8rem, 5vw, 2.6rem);
-    color:#fff;
+    color:black;
     font-family:'Alex Brush',cursive;
-    font-weight:400;
+    font-weight:500;
     margin:0;
   }
   .event-hint{
