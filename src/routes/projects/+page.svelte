@@ -17,12 +17,17 @@
 
 <svelte:head>
   <title>Projects — Rotaract Club of Lilongwe</title>
+  <meta
+    name="description"
+    content="Explore the community service projects of the Rotaract Club of Lilongwe — from disease prevention and education to water and economic development initiatives across Malawi."
+  />
 </svelte:head>
 
 <!-- PROJECTS GRID -->
 <section class="projects-section">
   <div class="projects-container">
     <div class="projects-header">
+      <h1 class="section-title">Our Projects</h1>
       <p class="section-subtitle">Our ongoing and completed initiatives making a difference in communities</p>
     </div>
 

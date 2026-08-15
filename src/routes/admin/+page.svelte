@@ -69,6 +69,16 @@ import {
 
 <svelte:head>
   <title>Admin Dashboard — RAC Portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Rotaract Club of Lilongwe admin dashboard for managing club members, activities, dues, attendance, donations, and partnerships." />
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Rotaract Club of Lilongwe Admin Portal',
+      url: 'https://rotaractlilongwe.com/admin'
+    })}
+  </script>
 </svelte:head>
 
 <div class="portal-page">

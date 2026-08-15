@@ -13,6 +13,8 @@
 
 <svelte:head>
   <title>Member Directory — Rotaract Portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Member directory for the Rotaract Club of Lilongwe portal." />
 </svelte:head>
 
 <div class="portal-page">

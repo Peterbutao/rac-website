@@ -12,6 +12,11 @@
 
 <svelte:head>
   <title>Member Login — Rotaract Club of Lilongwe</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta
+    name="description"
+    content="Sign in to the Rotaract Club of Lilongwe member portal using your assigned RAC number to access your member profile and club resources."
+  />
 </svelte:head>
 
 <div class="login-page">
@@ -21,7 +26,7 @@
       <a href="/" class="back-link">← Back to home</a>
       <div class="login-brand">
         <div class="section-pill dark">MEMBER PORTAL</div>
-        <h2>WELCOME<br /><span>BACK</span></h2>
+        <h1>WELCOME<br /><span>BACK</span></h1>
         <p>
           Sign in with your assigned RAC number.
           If you haven't received your credentials yet, your application may still be under review.
@@ -207,7 +212,7 @@
   z-index: 1;
 }
 .login-brand { margin-top: var(--space-6); }
-.login-brand h2 {
+.login-brand h1 {
   font-family: 'Anton', sans-serif;
   color: white;
   font-size: clamp(40px, 6vw, 64px);
@@ -216,7 +221,7 @@
   text-transform: uppercase;
   letter-spacing: 0;
 }
-.login-brand h2 span {
+.login-brand h1 span {
   color: var(--primary);
 }
 .login-brand p {

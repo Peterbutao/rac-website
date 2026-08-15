@@ -25,6 +25,8 @@
 
 <svelte:head>
   <title>My Profile — Rotaract Portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="View and manage your Rotaract Club of Lilongwe member profile, dues, committees, and account settings." />
 </svelte:head>
 
 <div class="portal-page">

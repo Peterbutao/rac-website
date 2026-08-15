@@ -6,7 +6,7 @@
   import { page } from '$app/stores';
   import { user, member, loading } from '$lib/stores/auth';
   import { createClient } from '$lib/supabase';
-  import { generateSEO, generateStructuredData } from '$lib/seo';
+  import { generateSEO, generateStructuredData, getOGImage, generateWebPageStructuredData } from '$lib/seo';
   import { FileText, Users, User, BookOpen, Handshake, Heart, UserPlus, LogIn, Info, Layers, MoreVertical, File } from 'lucide-svelte';
 
   export let data;
@@ -14,7 +14,13 @@
   const supabase = createClient();
   
   $: seo = generateSEO();
+  $: ogImage = getOGImage(seo.image);
   $: structuredData = generateStructuredData({ ...seo, url: $page.url.href });
+  $: webPageStructuredData = generateWebPageStructuredData({
+    title: seo.title,
+    description: seo.description,
+    url: $page.url.href
+  });
 
   $: {
     $user = data.user ?? data.session?.user ?? null;
@@ -60,6 +66,7 @@
   $: isPortal = $page.url.pathname.startsWith('/portal') || $page.url.pathname.startsWith('/admin');
   $: isAdmin  = $member?.is_admin ?? false;
   $: isInductionPage = $page.url.pathname === '/about/11th-induction';
+  $: isTracker = $page.url.pathname === '/endpolio/D9210-endpolionow-tracker';
   $: if (data.member?.id !== selectedCommitteeMemberId) {
     selectedCommitteeMemberId = data.member?.id ?? null;
     selectedCommitteeIds = (data.memberCommitteeIds ?? []).map((id: number) => String(id));
@@ -108,7 +115,10 @@
   <meta property="og:url" content={$page.url.href} />
   <meta property="og:title" content={seo.title} />
   <meta property="og:description" content={seo.description} />
-  <meta property="og:image" content={seo.image} />
+  <meta property="og:image" content={ogImage.url} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
   <meta property="og:site_name" content={seo.siteName} />
   <meta property="og:locale" content={seo.locale} />
   
@@ -117,21 +127,26 @@
   <meta name="twitter:url" content={$page.url.href} />
   <meta name="twitter:title" content={seo.title} />
   <meta name="twitter:description" content={seo.description} />
-  <meta name="twitter:image" content={seo.image} />
+  <meta name="twitter:image" content={ogImage.url} />    <meta name="twitter:image:alt" content={ogImage.alt} />
   {#if seo.twitterHandle}
     <meta name="twitter:site" content={seo.twitterHandle} />
+    <meta name="twitter:creator" content={seo.twitterHandle} />
   {/if}
   
   <!-- Canonical URL -->
   <link rel="canonical" href={$page.url.href} />
+  <meta name="application-name" content="Rotaract Club of Lilongwe" />
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
     {JSON.stringify(structuredData)}
   </script>
+  <script type="application/ld+json">
+    {JSON.stringify(webPageStructuredData)}
+  </script>
 </svelte:head>
 
-{#if !isPortal}
+{#if !isPortal && !isTracker}
 <header class="site-header" class:scrolled={scrolled}>
   <div class=" site-header__inner">
     <a href="/" class="site-logo">
@@ -228,7 +243,7 @@
 
   </div>
 </header>
-{:else}
+{:else if isPortal}
 <header class="portal-header nav_padding">
   <div class="container portal-header__inner">
     <a href="/" class="site-logo site-logo--light">
