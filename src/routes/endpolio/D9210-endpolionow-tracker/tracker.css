@@ -308,7 +308,7 @@
   border-right:1px solid var(--line);
 }
 .polio-tracker table.week-table td.week-label .w-num{
-  display:block;
+  display:flex; align-items:center; gap:8px;
   font-family:var(--font-mono); font-size:.7rem; font-weight:700;
   letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
 }
@@ -316,6 +316,17 @@
   display:block;
   font-family:var(--font-mono); font-size:.64rem; color:var(--muted);
   margin-top:3px;
+}
+.polio-tracker table.week-table tr.is-current td{
+  background:#fdf6e7;
+}
+.polio-tracker table.week-table tr.is-current td.week-label{background:#fbe9c2;}
+.polio-tracker table.week-table tr.is-current td.col-0,
+.polio-tracker table.week-table tr.is-current td.col-2{background:#fdf2dc;}
+.polio-tracker table.week-table .w-now{
+  padding:1px 8px; border-radius:999px; background:var(--gold); color:#fff;
+  font-style:normal; font-size:.52rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.05em;
 }
 
 /* Checkable post chain cards */

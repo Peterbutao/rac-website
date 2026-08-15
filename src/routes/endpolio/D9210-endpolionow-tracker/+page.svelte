@@ -169,6 +169,24 @@
   let activeFilter = "all";
   let searchTerm = "";
 
+  // Parse a typed week range like "Week 1 (7–13 Sep)" or "Week 4 (28 Sep–4 Oct)"
+  // into real Date objects so "this week" can be detected against the live clock.
+  const MONTH_INDEX = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+  function parseWeekRange(label, year){
+    const m = String(label).match(/\((\d{1,2})(?:\s+([A-Za-z]{3}))?\s*[–-]\s*(\d{1,2})\s+([A-Za-z]{3})\)/);
+    if(!m) return null;
+    const sDay = +m[1], sMon = m[2] ? MONTH_INDEX[m[2]] : MONTH_INDEX[m[4]];
+    const eDay = +m[3], eMon = MONTH_INDEX[m[4]];
+    const eYear = eMon < sMon ? year + 1 : year;
+    return { start: new Date(year, sMon, sDay), end: new Date(eYear, eMon, eDay) };
+  }
+  function monthYearOf(id){ return parseInt(id.slice(0,4), 10); }
+  function todayStart(){
+    const d = new Date();
+    d.setHours(0,0,0,0);
+    return d;
+  }
+
   function getDeviceKey(){
     try{
       let key = localStorage.getItem(DEVICE_KEY_STORAGE);
@@ -449,13 +467,17 @@
     const nextItemId = next ? next.id : null;
 
     let rowsHtml = "";
+    const today = todayStart();
+    const monthYear = monthYearOf(m.id);
     m.weeks.forEach((w,wi)=>{
       const weekNum = w.label.split(' (')[0];
       const rangeMatch = w.label.match(/\(([^)]+)\)/);
       const range = rangeMatch ? rangeMatch[1] : '';
-      rowsHtml += `<tr>
+      const rng = parseWeekRange(w.label, monthYear);
+      const isCurrent = rng && today >= rng.start && today <= rng.end;
+      rowsHtml += `<tr${isCurrent?' class="is-current"':''}>
         <td class="week-label">
-          <span class="w-num">${weekNum}</span>
+          <span class="w-num">${weekNum}${isCurrent?'<span class="w-now">this week</span>':''}</span>
           <span class="w-range">${range}</span>
         </td>
         <td class="col-0">${dayCell(w.mon,m,wi,'mon',nextItemId)}</td>
@@ -533,6 +555,19 @@
       });
     });
 
+    const now = new Date();
+    const ym = now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0");
+    const rangeStart = Date.parse(DATA[0].id+"-01T00:00:00");
+    const rangeEnd = Date.parse(DATA[DATA.length-1].id+"-01T00:00:00") + 40*864e5;
+    if(now.getTime() > rangeEnd){
+      activeMonth = DATA[DATA.length-1].id;
+    } else if(now.getTime() >= rangeStart && DATA.some(m=>m.id===ym)){
+      activeMonth = ym;
+    }
+
+    document.getElementById("planRange").textContent =
+      `${DATA[0].label} – ${DATA[DATA.length-1].label}`;
+
     render();
     loadFromDb();
   });
@@ -545,7 +580,7 @@
 <div class="polio-tracker">
   <header>
     <div class="inner">
-      <p class="eyebrow">Content Calendar <b>·</b> Sep 2026 – Jun 2027</p>
+      <p class="eyebrow">Content Calendar <b>·</b> <span id="planRange"></span></p>
       <h1>Polio &amp; <span class="accent">Immunization</span> Campaign Tracker</h1>
       <p class="sub">Every Child. Every Dose. Every Community. A Polio-Free Future.</p>
       <div class="goal-row">

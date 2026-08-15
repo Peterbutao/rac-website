@@ -30,7 +30,7 @@ export const DEFAULT_SEO: Required<Pick<SEOData, 'title' | 'description' | 'site
     'Service Projects', 'Professional Development', 'International Service', 'Club Service', 'Community Development'
   ],
   image: {
-    url: 'https://kwwvmkszattobpgisslt.supabase.co/storage/v1/object/public/RAC/RAC/og-image.png',
+    url: '/og-image.png',
     width: 1200,
     height: 630,
     alt: 'Rotaract Club of Lilongwe logo - Unite for Good'
