@@ -1,0 +1,455 @@
+.polio-tracker{
+  --paper:#ffffff;
+  --bg:#f7f2ee;
+  --soft:#faf6f3;
+  --ink:#2b1a20;
+  --muted:#8a7b81;
+  --red:#d92645;
+  --red-deep:#a90f2c;
+  --gold:#e8a83b;
+  --green:#1f9d63;
+  --line:#ece0e3;
+  --radius:14px;
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:'DM Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:'DM Mono', 'SF Mono', Consolas, monospace;
+}
+
+.polio-tracker,
+.polio-tracker *,
+.polio-tracker *::before,
+.polio-tracker *::after{
+  box-sizing:border-box;
+}
+.polio-tracker{
+  /* padding: 5vh; */
+  background-image: url("/PROJECTS/endpolio-2.jpg");
+  background-color: #a90f2bdc;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.5;
+  padding: 5vh 0;
+}
+
+/* ===== Header ===== */
+.polio-tracker header{
+  background:linear-gradient(135deg, var(--red), var(--red-deep));
+  color:#fff;
+  position:relative;
+  max-width: 1170px;
+  margin: auto;
+}
+.polio-tracker header::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:4px;
+  background:var(--gold);
+}
+.polio-tracker header .inner{
+  max-width:1180px; margin:0 auto; position:relative; z-index:1;
+  padding:30px 24px 34px;
+}
+.polio-tracker .eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  color:#ffd9de; margin:0 0 12px;
+}
+.polio-tracker .eyebrow b{color:var(--gold);}
+.polio-tracker header h1{
+  font-family:var(--font-display);
+  font-weight:700;
+  margin:0 0 8px;
+  font-size:clamp(1.6rem, 3vw, 2.3rem);
+  line-height:1.1;
+}
+.polio-tracker header h1 .accent{color:var(--gold);}
+.polio-tracker header p.sub{margin:0; color:#ffe6ea; font-size:.95rem; font-weight:500;}
+.polio-tracker .goal-row{
+  display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;
+}
+.polio-tracker .goal-chip{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  padding:7px 14px;
+  font-size:.75rem;
+  font-family:var(--font-mono);
+  color:#fff;
+}
+.polio-tracker .goal-chip .n{color:var(--gold); font-weight:700; margin-right:3px;}
+
+.polio-tracker .container{max-width:1180px; margin:0 auto; padding:0 24px 80px;}
+
+/* ===== Overall progress card ===== */
+.polio-tracker .record-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 24px 20px;
+  box-shadow:0 10px 30px rgba(43,26,32,.06);
+  margin:24px 0 20px;
+}
+.polio-tracker .record-card .rc-top{
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.polio-tracker .rc-title{
+  font-family:var(--font-mono);
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.14em;
+  color:var(--muted);
+}
+.polio-tracker .rc-pct{
+  font-family:var(--font-display);
+  font-size:2rem; font-weight:700; color:var(--red); text-align:right; line-height:1;
+}
+.polio-tracker .rc-pct span{
+  display:block;
+  font-family:var(--font-mono);
+  font-size:.7rem; font-weight:600; color:var(--muted);
+  margin-top:5px;
+}
+
+/* Segmented month progress bar */
+.polio-tracker .dose-row{
+  display:grid;
+  grid-template-columns:repeat(var(--seg-count, 10), minmax(0, 1fr));
+  gap:8px;
+  margin-top:16px;
+}
+@media (max-width:760px){
+  .polio-tracker .dose-row{ grid-template-columns:repeat(5, minmax(0,1fr)); }
+}
+.polio-tracker .dose-stamp{
+  appearance:none;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--soft);
+  padding:8px 6px 10px;
+  cursor:pointer;
+  display:flex; flex-direction:column; gap:7px;
+  text-align:center;
+  transition:border-color .15s, box-shadow .15s, background .15s;
+  font:inherit;
+}
+.polio-tracker .dose-stamp:hover{border-color:var(--red);}
+.polio-tracker .dose-stamp.active{
+  border-color:var(--red);
+  background:#fff;
+  box-shadow:0 0 0 1px var(--red);
+}
+.polio-tracker .dose-stamp.next{border-color:var(--gold);}
+.polio-tracker .seg-head{
+  display:flex; justify-content:space-between; align-items:baseline; gap:4px;
+}
+.polio-tracker .seg-name{
+  font-family:var(--font-mono);
+  font-size:.6rem; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--muted);
+}
+.polio-tracker .seg-val{
+  font-family:var(--font-mono);
+  font-size:.64rem; font-weight:700; color:var(--ink);
+}
+.polio-tracker .dose-stamp.next .seg-val{color:var(--gold);}
+.polio-tracker .seg-track{
+  height:5px; border-radius:99px; background:var(--line); overflow:hidden;
+}
+.polio-tracker .seg-fill{
+  display:block; height:100%; border-radius:99px;
+  background:var(--red);
+  transition:width .3s ease;
+}
+.polio-tracker .dose-stamp.next .seg-fill{background:var(--gold);}
+
+/* ===== Controls: search + filters ===== */
+.polio-tracker .controls{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+  margin-bottom:14px;
+}
+.polio-tracker .search{
+  flex:1; min-width:220px;
+  padding:10px 14px;
+  border:1px solid var(--line); border-radius:10px;
+  font-size:.9rem; background:#fff; font-family:var(--font-body);
+  color:var(--ink);
+}
+.polio-tracker .search::placeholder{color:var(--muted); opacity:.8;}
+.polio-tracker .search:focus{outline:2px solid var(--red); outline-offset:-1px; border-color:transparent;}
+.polio-tracker .filter-chip{
+  padding:8px 15px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:.8rem; font-weight:600; cursor:pointer; color:var(--ink);
+  white-space:nowrap; font-family:var(--font-body);
+  transition:background .15s, color .15s, border-color .15s;
+}
+.polio-tracker .filter-chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+/* ===== Up-next callout ===== */
+.polio-tracker .up-next{
+  display:flex; align-items:center; gap:14px;
+  background:var(--ink); color:#fff;
+  border-radius:12px; padding:14px 18px; margin-bottom:18px;
+  box-shadow:0 10px 24px rgba(43,26,32,.18);
+}
+.polio-tracker .up-next .un-flag{
+  flex:none;
+  font-family:var(--font-mono); font-size:.62rem; text-transform:uppercase;
+  letter-spacing:.1em; background:var(--gold); color:#4a3a00;
+  padding:5px 10px; border-radius:6px; font-weight:700;
+}
+.polio-tracker .up-next .un-text{flex:1; font-size:.94rem; font-weight:600;}
+.polio-tracker .up-next .un-text .un-when{
+  font-family:var(--font-mono); font-weight:500; color:#d8c9cd;
+  font-size:.76rem; display:block; margin-top:2px;
+}
+.polio-tracker .up-next.all-done{background:var(--green);}
+
+/* ===== Month tabs ===== */
+.polio-tracker .month-tabs{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-bottom:16px;
+}
+.polio-tracker .month-tab{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:.8rem; font-weight:600; cursor:pointer;
+  color:var(--muted); font-family:var(--font-body);
+  transition:background .15s, color .15s, border-color .15s;
+}
+.polio-tracker .month-tab .mini-dot{
+  display:inline-block; width:7px; height:7px; border-radius:50%;
+  background:var(--gold);
+}
+.polio-tracker .month-tab.complete .mini-dot{background:var(--green);}
+.polio-tracker .month-tab.active{
+  background:var(--red); color:#fff; border-color:var(--red);
+}
+.polio-tracker .month-tab.active .mini-dot{background:#fff;}
+
+/* ===== Month view ===== */
+.polio-tracker .month-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+  margin-bottom:16px;
+  box-shadow:0 8px 24px rgba(43,26,32,.05);
+}
+.polio-tracker .month-card h2{
+  font-family:var(--font-display);
+  font-size:1.05rem; font-weight:700; margin:0 0 4px; color:var(--ink);
+}
+.polio-tracker .month-card .month-progress{
+  font-family:var(--font-mono); font-size:.74rem; color:var(--muted); margin-bottom:14px;
+}
+.polio-tracker .campaign-note{
+  background:#fdf6e7;
+  border:1px solid #f0e3bd;
+  border-left:3px solid var(--gold);
+  color:#7a5f16;
+  padding:9px 12px;
+  border-radius:8px;
+  font-size:.84rem;
+  margin-bottom:16px;
+}
+
+/* Week table */
+.polio-tracker table.week-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:.88rem;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 18px rgba(43,26,32,.05);
+}
+@media (max-width:640px){
+  .polio-tracker table.week-table{display:block; overflow-x:auto; white-space:nowrap;}
+}
+.polio-tracker table.week-table th{
+  text-align:left;
+  background:var(--soft);
+  color:var(--muted);
+  padding:13px 16px;
+  font-size:.66rem; text-transform:uppercase; letter-spacing:.12em;
+  font-family:var(--font-mono);
+  border-bottom:1px solid var(--line);
+}
+.polio-tracker table.week-table th::before{
+  content:"";
+  display:inline-block;
+  width:7px; height:7px; border-radius:50%;
+  margin-right:8px; vertical-align:1.5px;
+  background:var(--line);
+}
+.polio-tracker table.week-table th:first-child::before{display:none;}
+.polio-tracker table.week-table th:nth-child(2)::before{background:var(--red);}
+.polio-tracker table.week-table th:nth-child(3)::before{background:var(--gold);}
+.polio-tracker table.week-table th:nth-child(4)::before{background:var(--green);}
+.polio-tracker table.week-table td{
+  vertical-align:top; padding:15px 16px; border-bottom:1px solid var(--line);
+}
+.polio-tracker table.week-table tr:last-child td{border-bottom:none;}
+.polio-tracker table.week-table tr td.col-0,
+.polio-tracker table.week-table tr td.col-2{background:rgba(43,26,32,.015);}
+.polio-tracker table.week-table td.week-label{
+  width:150px;
+  background:var(--soft);
+  border-right:1px solid var(--line);
+}
+.polio-tracker table.week-table td.week-label .w-num{
+  display:block;
+  font-family:var(--font-mono); font-size:.7rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
+}
+.polio-tracker table.week-table td.week-label .w-range{
+  display:block;
+  font-family:var(--font-mono); font-size:.64rem; color:var(--muted);
+  margin-top:3px;
+}
+
+/* Checkable post chain cards */
+.polio-tracker .post-item{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:9px 11px; border-radius:10px;
+  margin:3px 0;
+  background:rgba(43,26,32,.03);
+  cursor:pointer;
+  transition:background .15s, transform .15s, box-shadow .15s;
+}
+.polio-tracker .post-item + .post-item{margin-top:8px;}
+.polio-tracker .post-item:hover{
+  background:rgba(43,26,32,.06);
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(43,26,32,.08);
+}
+.polio-tracker .post-item input[type=checkbox]{
+  position:absolute; opacity:0; width:1px; height:1px;
+}
+.polio-tracker .post-item .stamp{
+  flex:none; width:18px; height:18px; border-radius:50%;
+  border:2px solid var(--line); margin-top:2px;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .15s, background .15s;
+}
+.polio-tracker .post-item input:checked + .stamp{
+  background:var(--red); border-color:var(--red);
+}
+.polio-tracker .post-item input:checked + .stamp::after{
+  content:""; width:5px; height:9px;
+  border-right:2px solid #fff; border-bottom:2px solid #fff;
+  transform:rotate(40deg) translate(-1px,-1px);
+}
+.polio-tracker .post-item input:focus-visible + .stamp{outline:2px solid var(--red); outline-offset:2px;}
+.polio-tracker .post-item span.txt{flex:1;}
+.polio-tracker .post-item.done{opacity:.62;}
+.polio-tracker .post-item.done span.txt{text-decoration:line-through; color:var(--muted);}
+.polio-tracker .post-item.next-up{
+  padding: 20px;
+  color:#fff;
+  background:var(--red);
+  box-shadow:inset 4px 0 0 var(--red-deep);
+  animation:next-pulse 1.8s ease-in-out infinite;
+}
+.polio-tracker .post-item.next-up span.txt{color:#fff;}
+.polio-tracker .post-item.next-up .stamp{
+  border-color:#fff;
+  animation:stamp-pulse 1.8s ease-in-out infinite;
+}
+@keyframes next-pulse{
+  0%,100%{ background:var(--red); }
+  50%{ background:#f3a9b6; }
+}
+@keyframes stamp-pulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(232,23,93,0); }
+  50%{ box-shadow:0 0 0 4px rgba(232,23,93,.35); }
+}
+@media (prefers-reduced-motion: reduce){
+  .polio-tracker .post-item.next-up,
+  .polio-tracker .post-item.next-up .stamp{ animation:none; }
+}
+.polio-tracker .post-item .tag{
+  display:inline-block;
+  font-family:var(--font-mono); font-size:.64rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.04em;
+  padding:2px 8px; border-radius:999px;
+  margin-right:7px; vertical-align:1px;
+}
+.polio-tracker .tag-education{background:#eef1fa; color:#3a4b9e;}
+.polio-tracker .tag-visual{background:#fdf3d9; color:#8a6d00;}
+.polio-tracker .tag-awareness{background:#f4eefb; color:#5d3a8a;}
+.polio-tracker .tag-campaign{background:#fdecef; color:#b3132b;}
+
+.polio-tracker .month-extra{
+  margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);
+  display:grid; grid-template-columns:1fr 1fr; gap:8px;
+}
+@media (max-width:640px){.polio-tracker .month-extra{grid-template-columns:1fr;}}
+
+.polio-tracker .hidden{display:none !important;}
+
+.polio-tracker :is(.dose-stamp, .month-tab, .filter-chip):focus-visible{
+  outline:2px solid var(--red); outline-offset:2px;
+}
+
+/* ===== Major campaign moments ===== */
+.polio-tracker .campaign-panel{margin-top:32px;}
+.polio-tracker .campaign-panel h3{
+  font-family:var(--font-display);
+  font-size:.95rem; font-weight:700; text-transform:uppercase; letter-spacing:.02em;
+  margin:0 0 14px;
+}
+.polio-tracker .campaign-list{display:flex; flex-direction:column; gap:10px;}
+.polio-tracker .ticket{
+  display:flex; align-items:stretch;
+  background:#fff;
+  border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  transition:opacity .15s;
+}
+.polio-tracker .ticket.next{border-color:var(--gold);}
+.polio-tracker .ticket.past{opacity:.55;}
+.polio-tracker .ticket-stub{
+  flex:none; width:74px;
+  background:var(--ink); color:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+  padding:10px 6px;
+  font-family:var(--font-mono);
+}
+.polio-tracker .ticket.next .ticket-stub{background:var(--red);}
+.polio-tracker .ticket.live .ticket-stub{background:var(--green);}
+.polio-tracker .ticket.past .ticket-stub{background:var(--muted);}
+.polio-tracker .ticket-stub .num{
+  font-family:var(--font-display); font-size:1.7rem; font-weight:700; line-height:1;
+}
+.polio-tracker .ticket-stub .unit{
+  font-size:.58rem; text-transform:uppercase; letter-spacing:.1em; opacity:.9;
+}
+.polio-tracker .ticket-body{
+  flex:1; padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+.polio-tracker .ticket-info{flex:1; min-width:200px;}
+.polio-tracker .ticket-info .title{font-weight:700; color:var(--ink); font-size:.94rem;}
+.polio-tracker .ticket-info .date{font-family:var(--font-mono); font-size:.72rem; color:var(--muted); margin-top:2px;}
+.polio-tracker .ticket-info .desc{font-size:.82rem; color:var(--muted); margin-top:4px; max-width:520px;}
+.polio-tracker .ticket-side{flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:6px;}
+.polio-tracker .ticket-badge{
+  font-family:var(--font-mono); font-size:.62rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.06em; padding:4px 10px; border-radius:999px;
+}
+.polio-tracker .ticket-badge.past{background:var(--line); color:var(--muted);}
+.polio-tracker .ticket-badge.upcoming{background:var(--soft); color:var(--muted); border:1px solid var(--line);}
+.polio-tracker .ticket-badge.next{background:var(--gold); color:#4a3a00;}
+.polio-tracker .ticket-badge.live{background:var(--green); color:#fff;}
+.polio-tracker .countdown{font-family:var(--font-mono); font-size:.7rem; color:var(--muted);}
+.polio-tracker .ticket.past .countdown{color:#b7a9ad;}

@@ -151,6 +151,13 @@ export interface DonationInterest {
   updated_at: string;
 }
 
+export interface EndPolioProgress {
+  device_key: string;
+  user_id: string | null;
+  progress: Record<string, boolean>;
+  updated_at: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -218,6 +225,11 @@ export interface Database {
         Row: DonationInterest;
         Insert: Omit<DonationInterest, 'id' | 'status' | 'created_at' | 'updated_at'>;
         Update: Partial<Omit<DonationInterest, 'id' | 'created_at'>>;
+      };
+      endpolio_progress: {
+        Row: EndPolioProgress;
+        Insert: Pick<EndPolioProgress, 'device_key'> & Partial<Omit<EndPolioProgress, 'device_key' | 'updated_at'>>;
+        Update: Partial<Omit<EndPolioProgress, 'device_key'>>;
       };
     };
     Views: {
