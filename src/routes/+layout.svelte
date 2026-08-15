@@ -13,8 +13,9 @@
 
   const supabase = createClient();
   
-  $: seo = generateSEO();
+  $: seo = generateSEO(($page.data as Record<string, unknown>)?.seo as SEOData | undefined);
   $: ogImage = getOGImage(seo.image);
+  $: ogImageUrl = new URL(ogImage.url, $page.url.origin).href;
   $: structuredData = generateStructuredData({ ...seo, url: $page.url.href });
   $: webPageStructuredData = generateWebPageStructuredData({
     title: seo.title,
@@ -115,7 +116,7 @@
   <meta property="og:url" content={$page.url.href} />
   <meta property="og:title" content={seo.title} />
   <meta property="og:description" content={seo.description} />
-  <meta property="og:image" content={ogImage.url} />
+  <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content={String(ogImage.width)} />
     <meta property="og:image:height" content={String(ogImage.height)} />
     <meta property="og:image:alt" content={ogImage.alt} />
@@ -127,7 +128,7 @@
   <meta name="twitter:url" content={$page.url.href} />
   <meta name="twitter:title" content={seo.title} />
   <meta name="twitter:description" content={seo.description} />
-  <meta name="twitter:image" content={ogImage.url} />    <meta name="twitter:image:alt" content={ogImage.alt} />
+  <meta name="twitter:image" content={ogImageUrl} />    <meta name="twitter:image:alt" content={ogImage.alt} />
   {#if seo.twitterHandle}
     <meta name="twitter:site" content={seo.twitterHandle} />
     <meta name="twitter:creator" content={seo.twitterHandle} />
