@@ -1,4 +1,4 @@
-export interface ProjectDetails {
+﻿export interface ProjectDetails {
   date?: string;
   venue?: string;
   time?: string;
@@ -26,7 +26,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ---------------- Q1: JULY – SEPTEMBER 2025 ----------------
+  // ---------------- Q1: JULY â€“ SEPTEMBER 2025 ----------------
   { id:"project-1", quarter:"Q1", title:"\u201COnce Upon a Book\u201D \u2014 Book Donation Drive",
     desc:"Twelve members gathered and donated over 500 children\u2019s books to the Life Leadership Academy, under the theme \u201CGrowing a World of Stories, One Awesome Book at a Time.\u201D",
     impact:"Strengthened the academy\u2019s library and reinforced grassroots literacy and educational access.",
@@ -112,7 +112,7 @@ export const projects: Project[] = [
 //     }
 //   },
 
-  // ---------------- Q2: OCTOBER – DECEMBER 2025 ----------------
+  // ---------------- Q2: OCTOBER â€“ DECEMBER 2025 ----------------
   { id:"project-6", quarter:"Q2", title:"End Polio Awareness Walk/Run",
     desc:"Rotaractors, Rotarians and community members walked and ran together to advocate for immunisation and educate the public on vaccination.",
     impact:"Strengthened community support for Rotary\u2019s mission to eradicate polio worldwide.",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
     }
   },
 
-  // ---------------- Q3: JANUARY – MARCH 2026 ----------------
+  // ---------------- Q3: JANUARY â€“ MARCH 2026 ----------------
   { id:"project-11", quarter:"Q3", title:"Rotary Foundation Info Session",
     desc:"Rtn. Jay Chikoya walked members through the Foundation\u2019s mission, funding mechanisms and grant opportunities across Rotary\u2019s Areas of Focus.",
     impact:"Deepened members\u2019 understanding of how Foundation grants translate into community impact.",
@@ -245,7 +245,7 @@ export const projects: Project[] = [
     }
   },
 
-  // ---------------- Q4: APRIL – JUNE 2026 ----------------
+  // ---------------- Q4: APRIL â€“ JUNE 2026 ----------------
   { id:"project-15", quarter:"Q4", title:"The Rotaract Trail Escape",
     desc:"A fellowship and fitness outing at Lilongwe Wildlife Centre and Kuwala Gardens, featuring a guided nature walk and social bonding.",
     impact:"Strengthened teamwork and club unity through outdoor recreation.",
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     }
   },
   { id:"project-16", quarter:"Q4", title:"District 9210 \u2014 The Umodzi DISCON 2026",
-    desc:"Rotaractors and Rotarians from Malawi, Zambia, Zimbabwe and Mozambique gathered under the theme \u201CUnite for Good\u201D for leadership development and celebration of service.",
+    desc:"Rotaractors and Rotarians from Malawi, Zambia, Zimbabwe and Mozambique gathered under the theme \u201CCreate Lasting Impact\u201D for leadership development and celebration of service.",
     impact:"Club honoured with Best Performing Club in Malawi, Best Storytelling & Media, Best Social Media Presence, and individual awards for President Timothy Sikelo and IPP Violet Odala.",
     images:[
       "/PROJECTS/discon26-1.jpg",
@@ -273,7 +273,7 @@ export const projects: Project[] = [
       venue:"Sunbird Waterfront Salima, Malawi",
       time:"Full-day Sessions",
       areaOfFocus:"Leadership Development & District Engagement",
-      fullDescription:"The District Conference (DISCON) 2026 brought together Rotaractors and Rotarians from Malawi, Zambia, Zimbabwe, and Mozambique under the theme 'Unite for Good' for leadership development, networking, learning, and celebration of outstanding service. One of the major lessons drawn from the conference was the importance of Service Above Self as a continuous commitment rather than a one-time activity. Participants were reminded that impactful service is achieved through consistency, collaboration, and intentional plans associated with Rotary's Areas of Focus.",
+      fullDescription:"The District Conference (DISCON) 2026 brought together Rotaractors and Rotarians from Malawi, Zambia, Zimbabwe, and Mozambique under the theme 'Create Lasting Impact' for leadership development, networking, learning, and celebration of outstanding service. One of the major lessons drawn from the conference was the importance of Service Above Self as a continuous commitment rather than a one-time activity. Participants were reminded that impactful service is achieved through consistency, collaboration, and intentional plans associated with Rotary's Areas of Focus.",
       fullImpact:"Participation in DISCON improved members' leadership and professional development, strengthened collaboration with other clubs across District 9210, and promoted the exchange of innovative service ideas. The recognition received reflects the club's commitment to excellence, effective communication, impactful service, and consistent performance.",
       keyLearnings:[
         "Leadership Development and Personal Growth: Effective leadership begins with self-discipline, emotional intelligence, and the ability to inspire others",

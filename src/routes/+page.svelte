@@ -1,4 +1,4 @@
-<script >
+﻿<script >
 
   import { member } from '$lib/stores/auth';
   import { onMount } from 'svelte';
@@ -15,7 +15,7 @@
   const json_data = {
     "STATS":[{"value":"42+","label":"Active Members"},{"value":"11","label":"Years Active"},{"value":"60+","label":"Projects Done"},{"value":"10+","label":"Countries Reached"}],
     "AVENUES":[{"icon":"Handshake","title":"Club Service","desc":"Building strong fellowship through teamwork, governance, and meaningful traditions.","iconKey":"Handshake"},{"icon":"Globe2","title":"Community Service","desc":"Local initiatives addressing health, literacy, environment, and youth in Lilongwe.","iconKey":"Globe2"},{"icon":"Briefcase","title":"Professional Development","desc":"Workshops, mentorship, and networking that prepare members for impactful careers.","iconKey":"Briefcase"},{"icon":"Globe","title":"International Service","desc":"Cross-border partnerships with Rotaract clubs spanning 180+ countries.","iconKey":"Globe"}],
-    "FOOTER_COLS":[{"heading":"Quick Links","links":["about/constitution","about/reports","about","projects"],"ℹ️ links column: comma-separated list":""},{"heading":"Get Involved","links":["join","partnerships","donate"],"ℹ️ links column: comma-separated list":""},{"heading":"Contact","links":["Lilongwe Malawi","lilongwerotaract@outlook.com","login","admin"],"ℹ️ links column: comma-separated list":""}],"ABOUT_TEAM_IMAGES":[{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(3).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (3)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(4).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (4)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(5).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (5)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(6).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (6)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(7).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (7)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(8).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (8)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(9).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (9)"}]}
+    "FOOTER_COLS":[{"heading":"Quick Links","links":["about/constitution","about/reports","about","projects"],"â„¹ï¸ links column: comma-separated list":""},{"heading":"Get Involved","links":["join","partnerships","donate"],"â„¹ï¸ links column: comma-separated list":""},{"heading":"Contact","links":["Lilongwe Malawi","lilongwerotaract@outlook.com","login","admin"],"â„¹ï¸ links column: comma-separated list":""}],"ABOUT_TEAM_IMAGES":[{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(3).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (3)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(4).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (4)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(5).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (5)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(6).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (6)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(7).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (7)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(8).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (8)"},{"src":"https://iksjnarreymddybgpmte.supabase.co/storage/v1/render/image/public/RAC/about/carousel%20(9).jpg?width=960&quality=72&resize=cover","alt":"Rotaract Club of Lilongwe team photo - carousel (9)"}]}
 
   const ICON_MAP = { Handshake, Globe2, Briefcase, Globe };
   
@@ -159,7 +159,7 @@
 </script>
 
 <svelte:head>
-  <title>Rotaract Club of Lilongwe — Unite for Good</title>
+  <title>Rotaract Club of Lilongwe â€” Create Lasting Impact</title>
   <link rel="preconnect" href="https://kwwvmkszattobpgisslt.supabase.co" crossorigin />
 </svelte:head>
 
@@ -186,11 +186,11 @@
             </div>
           </div>
           <p class="hero-sub">
-            Empowering young leaders. Transforming communities in Lilongwe and beyond — under the banner of Rotary International.
+            Empowering young leaders. Transforming communities in Lilongwe and beyond â€” under the banner of Rotary International.
           </p>
 
           <div class="hero-ctas">
-            <a href="/projects" class="btn-primary">Explore Projects →</a>
+            <a href="/projects" class="btn-primary">Explore Projects â†’</a>
             {#if $member}
               <a href="/portal" class="btn-outline-white">Go to Portal</a>
             {:else}
@@ -261,7 +261,7 @@
         SERVICE
       </h2>
       <p class="about-body">
-        From peri-urban development,health outreach camps, youth mentorship, and vocational skills programmes, we turn youth-led ideas into tangible change — right here in Lilongwe's communities and beyond.
+        From peri-urban development,health outreach camps, youth mentorship, and vocational skills programmes, we turn youth-led ideas into tangible change â€” right here in Lilongwe's communities and beyond.
       </p>
       <div class="about-team-carousel-wrap">
         {#if aboutTeamImages.length}
@@ -332,16 +332,16 @@
         <div class="about-card-label dark">Rotary District covering Malawi, Zambia, Zimbabwe & Mozambique</div>
       </div>
       <div class="about-card">
-        <div class="about-card-value">Ages 18–30 +</div>
+        <div class="about-card-value">Ages 18â€“30 +</div>
         <div class="about-card-label">Young professionals & students united by service and leadership</div>
       </div>
       <div class="about-card">
         <div class="about-card-value">Lilongwe, Malawi</div>
-        <div class="about-card-label">Rooted in the capital — reaching communities across the nation</div>
+        <div class="about-card-label">Rooted in the capital â€” reaching communities across the nation</div>
       </div>
       <div class="about-card dark">
         <div class="about-card-value dark">partners with RCL</div>
-        <div class="about-card-label dark">Backed by the Rotary Club of Lilongwe — chartered since 1970</div>
+        <div class="about-card-label dark">Backed by the Rotary Club of Lilongwe â€” chartered since 1970</div>
       </div>
     </div>
 
@@ -364,7 +364,7 @@
         </h2>
       </div>
       <p class="avenues-subtitle">
-        Every project we run lives inside one of Rotaract's four avenues of service — the framework that has guided clubs worldwide since 1968.
+        Every project we run lives inside one of Rotaract's four avenues of service â€” the framework that has guided clubs worldwide since 1968.
       </p>
     </div>
 
@@ -410,7 +410,7 @@
           Events & <span class="events-subtitle-accent" style="font-family: var(--font-cursive); color: var(--orange);">Sessions</span>
         </h2>
       </div>
-      <a href="https://www.instagram.com/rotaractlilongwe/" class="events-view-all">View all →</a>
+      <a href="https://www.instagram.com/rotaractlilongwe/" class="events-view-all">View all â†’</a>
     </div>
 
     <div class="events-carousel">
@@ -556,7 +556,7 @@
 
     {#if HAS_MORE_PROJECTS}
       <div class="more-projects-wrapper">
-        <a href="/projects" class="btn-more-projects">More Projects →</a>
+        <a href="/projects" class="btn-more-projects">More Projects â†’</a>
       </div>
     {/if}
   </div>
@@ -572,7 +572,7 @@
       Join a movement of young leaders committed to service, fellowship, and positive change in Lilongwe and beyond.
     </p>
     <div class="join-ctas">
-      <a href="/join" class="btn-white">Apply to Join →</a>
+      <a href="/join" class="btn-white">Apply to Join â†’</a>
       <a href="/contact" class="btn-outline-white-ghost">Learn More</a>
     </div>
   </div>
@@ -585,7 +585,7 @@
         <div class="logo-wrap" style="margin-bottom:16px">
           <div class="image-logo"><img src={logo} alt="roteract logo"></div>
           <div>
-            <div class="logo-tagline">UNITE FOR GOOD</div>
+            <div class="logo-tagline">CREATE LASTING IMPACT</div>
             <div style="font-family: var(--font-jakarta);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:.5px">Rotaract Club of Lilongwe</div>
           </div>
         </div>
@@ -625,8 +625,8 @@
     </div>
 
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
-      <span class="footer-tagline">UNITE FOR GOOD</span>
+      <span class="footer-copy">Â© 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
+      <span class="footer-tagline">CREATE LASTING IMPACT</span>
     </div>
   </div>
 </footer>

@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   import { onMount } from 'svelte';
   import logo from '$lib/assets/logo.png';
   import { ArrowRight, Briefcase, Clock, FileText, Globe, Globe2, Handshake, MapPin } from 'lucide-svelte';
@@ -65,12 +65,14 @@
   ];
 
   const currentLeadership = [
-    { role: 'Current President', name: 'Timothy Sikelo', term: '2025/26' },
-    { role: 'President Elect', name: 'Menia Chaphamtengo', term: '2026/27' },
-    { role: 'President Nominee', name: 'Tadala Tenthani', term: '2027/28' }
+    { role: 'Current President', name: 'Menia Chaphamtengo', term: '2026/27' },
+    { role: 'President Elect', name: 'Tadala Tenthani', term: '2027/28' },
+    { role: 'IPP / Advisor', name: 'Timothy Sikelo', term: '2025/26' }
   ];
 
-  const boardMembers = [
+
+
+  const boardMembers_2025_2026 = [
     ['Secretary', 'Francisco Mijoni'],
     ['Treasurer', 'Prince Mthikira'],
     ['Sergeant At Arms', 'Tapiwa Dube'],
@@ -84,18 +86,38 @@
     ['Fundraising Committee', 'Wedson Kumwenda']
   ];
 
+    const boardMembers_2026_2027 = [
+      ['Club President', 'Menia Chaphamtengo'],
+      ['IPP/ Advisor', 'Timothy Sikelo'],
+      ['Club Secretary', 'Thembeka Khumalo'],
+      ['Club Treasurer', 'Prince Mthikira'],
+      ['Sergeant At Arms', 'Tapiwa Hasha Dube'],
+      ['Sergeant At Arms', 'Michael Tembo'],
+      ['PE/ TRF Director', 'Tadala Tenthani'],
+      ['Community Service Director', 'Peter Butao'],
+      ['Club Service Director', 'Reyshma Salim'],
+      ['International Service Director', 'Lusungu Wowa'],
+      ['P&L Dev Director', 'Stella Kamwendo'],
+      ['New Gen Director', 'Simbarashe Muphuwa'],
+      ['Public Image Director', 'Leonard Chaula'],
+      ['Fundraising Director', 'Wedson Kumwenda']
+    ];
+
+
   const pastPresidents = [
     ['Chifundo Chilera', 'Charter President, 2015/16'],
-    ["Dominic Mang'anda", '2015/16'],
-    ['Isabel Kumwembe', '2016/17'],
-    ['Mayamiko Tembo', '2017/18'],
+    ["Dominic Mang'anda", '2016/17'],
+    ['Isabel Kumwembe', '2017/18'],
     ['Pius Kanyengambeta', '2018/19'],
     ['Mvaiwa Chigaru', '2018/19'],
-    ['Helena Mnthinda', '2019/20'],
-    ['Mphanda Kabwazi', '2020/21'],
+    ['Mayamiko Tembo', '2019/20'],
+    ['Helena Mnthinda', '2020/21'],
+    ['Mphanda Kabwazi', '2021/22'],
     ['Mike Jambawe', '2022/23'],
     ['Esther Bonyonga', '2023/24'],
-    ['Violet Odala', '2024/25']
+    ['Violet Odala', '2024/25'],
+    ['Timothy Sikelo', '2025/26'],
+    ['Menia Chaphamtengo', '2026/27']
   ];
 
   let scrolled = false;
@@ -269,17 +291,33 @@
       </div>
       
       <div class="leadership-lists">
-        <section class="board-panel" aria-labelledby="board-heading">
-          <h3 id="board-heading">Board Members</h3>
-          <div class="role-list">
-            {#each boardMembers as [role, name]}
-            <div class="role-row">
-              <span>{role}</span>
-              <strong>{name}</strong>
+        <div class="boards-wrap">
+          <section class="board-panel" aria-labelledby="board-heading">
+            <h3 id="board-heading">Board Members</h3>
+            <span class="panel-year">2026/27</span>
+            <div class="role-list">
+              {#each boardMembers_2026_2027 as [role, name]}
+              <div class="role-row">
+                <span>{role}</span>
+                <strong>{name}</strong>
+              </div>
+              {/each}
             </div>
-            {/each}
-          </div>
-        </section>
+          </section>
+
+          <section class="board-panel" aria-labelledby="previous-board-heading">
+            <h3 id="previous-board-heading">Previous Board Members</h3>
+            <span class="panel-year">2025/26</span>
+            <div class="role-list">
+              {#each boardMembers_2025_2026 as [role, name]}
+              <div class="role-row">
+                <span>{role}</span>
+                <strong>{name}</strong>
+              </div>
+              {/each}
+            </div>
+          </section>
+        </div>
 
         <section class="past-panel" aria-labelledby="past-heading">
           <h3 id="past-heading">Past Presidents</h3>
@@ -321,7 +359,7 @@
       <div class="logo-wrap">
         <div class="image-logo"><img src={logo} alt="Rotaract Club of Lilongwe logo" /></div>
         <div>
-          <div class="logo-tagline">UNITE FOR GOOD</div>
+          <div class="logo-tagline">CREATE LASTING IMPACT</div>
           <div class="logo-name">Rotaract Club of Lilongwe</div>
         </div>
       </div>
@@ -331,7 +369,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
-      <span class="footer-tagline">UNITE FOR GOOD</span>
+      <span class="footer-tagline">CREATE LASTING IMPACT</span>
     </div>
   </div>
 </footer>
@@ -744,6 +782,12 @@
     display: grid;
     grid-template-columns: 1.35fr 1fr;
     gap: 26px;
+    align-items: start;
+  }
+
+  .boards-wrap {
+    display: grid;
+    gap: 26px;
   }
 
   .board-panel,
@@ -751,6 +795,16 @@
     background: var(--cream);
     padding: 30px;
     border: 1px solid rgba(0, 0, 0, .06);
+  }
+
+  .panel-year {
+    display: inline-flex;
+    color: var(--primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
   }
 
   .role-list,

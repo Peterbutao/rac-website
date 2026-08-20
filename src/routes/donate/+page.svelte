@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { enhance } from '$app/forms';
   import type { ActionData } from './$types';
   import logo from '$lib/assets/logo.png';
@@ -24,12 +24,12 @@
 </script>
 
 <svelte:head>
-  <title>Donate — Rotaract Club of Lilongwe</title>
+  <title>Donate â€” Rotaract Club of Lilongwe</title>
   <meta name="description" content="Support the Rotaract Club of Lilongwe. Your donation helps fund community projects, youth leadership programs, and service initiatives across Malawi." />
 </svelte:head>
 
 <main>
-  <!-- ─── HERO ─── -->
+  <!-- â”€â”€â”€ HERO â”€â”€â”€ -->
   <section class="donate-hero">
     <div class="hero-shade"></div>
     <div class="hero-inner">
@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <!-- ─── IMPACT SECTION ─── -->
+  <!-- â”€â”€â”€ IMPACT SECTION â”€â”€â”€ -->
   <section class="impact-section">
     <div class="impact-inner">
       <div class="impact-header">
@@ -81,7 +81,7 @@
     </div>
   </section>
 
-  <!-- ─── DONATION INFO ─── -->
+  <!-- â”€â”€â”€ DONATION INFO â”€â”€â”€ -->
   <section class="info-section">
     <div class="info-inner">
       <div class="info-header">
@@ -127,13 +127,13 @@
     </div>
   </section>
 
-  <!-- ─── FORM SECTION ─── -->
+  <!-- â”€â”€â”€ FORM SECTION â”€â”€â”€ -->
   <section class="form-section" id="contact">
     <div class="form-inner">
       {#if form?.success}
-        <!-- ─── SUCCESS STATE ─── -->
+        <!-- â”€â”€â”€ SUCCESS STATE â”€â”€â”€ -->
         <div class="success-card">
-          <div class="success-card__icon">💝</div>
+          <div class="success-card__icon">ðŸ’</div>
           <h2>THANK<br /><span>YOU!</span></h2>
           <p>
             Thank you, <strong>{form.full_name}</strong>! Your interest in donating has been received.
@@ -152,7 +152,7 @@
 
         {#if form?.error}
           <div class="alert alert--error form-alert">
-            ⚠️ {form.error}
+            âš ï¸ {form.error}
           </div>
         {/if}
 
@@ -274,7 +274,7 @@
 
           <div class="form-actions">
             <button type="submit" class="btn-primary" disabled={submitting}>
-              {submitting ? 'Sending…' : 'Submit Interest'}
+              {submitting ? 'Sendingâ€¦' : 'Submit Interest'}
             </button>
           </div>
         </form>
@@ -282,7 +282,7 @@
     </div>
   </section>
 
-  <!-- ─── CTA SECTION ─── -->
+  <!-- â”€â”€â”€ CTA SECTION â”€â”€â”€ -->
   <section class="cta-section">
     <div class="cta-inner">
       <div class="cta-note">
@@ -290,7 +290,7 @@
           <div class="section-pill dark">GET INVOLVED</div>
           <h2>MAKE A<br /><span style="color: var(--orange); font-family:var( --font-cursive);">DIFFERENCE TODAY</span></h2>
           <p>
-            Every contribution — big or small — helps us build a stronger, healthier,
+            Every contribution â€” big or small â€” helps us build a stronger, healthier,
             and more educated community in Lilongwe.
           </p>
         </div>
@@ -300,14 +300,14 @@
    </section>
  </main>
 
-<!-- ─── FOOTER ─── -->
+<!-- â”€â”€â”€ FOOTER â”€â”€â”€ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="logo-wrap">
         <div class="image-logo"><img src={logo} alt="Rotaract Club of Lilongwe logo" /></div>
         <div>
-          <div class="logo-tagline">UNITE FOR GOOD</div>
+          <div class="logo-tagline">CREATE LASTING IMPACT</div>
           <div class="logo-name">Rotaract Club of Lilongwe</div>
         </div>
       </div>
@@ -317,13 +317,13 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
-      <span class="footer-tagline">UNITE FOR GOOD</span>
+      <span class="footer-tagline">CREATE LASTING IMPACT</span>
     </div>
   </div>
 </footer>
 
 <style>
-  /* ─── Hero ─── */
+  /* â”€â”€â”€ Hero â”€â”€â”€ */
   .donate-hero {
     position: relative;
     min-height: 60vh;
@@ -400,7 +400,7 @@
     line-height: 1.75;
   }
 
-  /* ─── Impact Section ─── */
+  /* â”€â”€â”€ Impact Section â”€â”€â”€ */
   .impact-section {
     background: var(--cream);
     padding: 96px 5vw;
@@ -474,7 +474,7 @@
     line-height: 1.65;
   }
 
-  /* ─── Info Section (Donation Methods) ─── */
+  /* â”€â”€â”€ Info Section (Donation Methods) â”€â”€â”€ */
   .info-section {
     background: var(--near-black);
     padding: 96px 5vw;
@@ -561,7 +561,7 @@
     margin-top: 20px;
   }
 
-  /* ─── Form Section ─── */
+  /* â”€â”€â”€ Form Section â”€â”€â”€ */
   .form-section {
     background: var(--cream);
     padding: 96px 5vw;
@@ -718,7 +718,7 @@
     padding-left: 52px !important;
   }
 
-  /* ─── Success ─── */
+  /* â”€â”€â”€ Success â”€â”€â”€ */
   .success-card {
     background: white;
     border: 1px solid rgba(0, 0, 0, .06);
@@ -764,7 +764,7 @@
     margin-top: var(--space-6);
   }
 
-  /* ─── CTA Section ─── */
+  /* â”€â”€â”€ CTA Section â”€â”€â”€ */
   .cta-section {
     background: var(--primary);
     padding: 76px 5vw;
@@ -846,7 +846,7 @@
     transform: translateY(-2px);
   }
 
-  /* ─── Footer ─── */
+  /* â”€â”€â”€ Footer â”€â”€â”€ */
   footer {
     background: var(--near-black);
     padding: 60px 5vw 34px;

@@ -1,4 +1,4 @@
-export interface ImageData {
+﻿export interface ImageData {
   url: string;
   width?: number;
   height?: number;
@@ -22,7 +22,7 @@ export interface SEOData {
 
 export const DEFAULT_SEO: Required<Pick<SEOData, 'title' | 'description' | 'siteName' | 'locale' | 'robots' | 'type' | 'url'>> &
   Pick<SEOData, 'keywords' | 'twitterHandle' | 'image'> = {
-  title: 'Rotaract Club of Lilongwe — Unite for Good',
+  title: 'Rotaract Club of Lilongwe â€” Create Lasting Impact',
   description: 'Empowering young leaders and transforming communities in Lilongwe, Malawi. Join the Rotaract Club of Lilongwe in service, fellowship, and positive change.',
   keywords: [
     'Rotaract', 'Rotaract Club', 'Lilongwe', 'Malawi', 'Rotary International',
@@ -33,7 +33,7 @@ export const DEFAULT_SEO: Required<Pick<SEOData, 'title' | 'description' | 'site
     url: '/og-image.png',
     width: 1200,
     height: 630,
-    alt: 'Rotaract Club of Lilongwe logo - Unite for Good'
+    alt: 'Rotaract Club of Lilongwe logo - Create Lasting Impact'
   },
   type: 'website',
   siteName: 'Rotaract Club of Lilongwe',

@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { enhance } from '$app/forms';
   import type { ActionData } from './$types';
   import logo from '$lib/assets/logo.png';
@@ -28,12 +28,12 @@
 </script>
 
 <svelte:head>
-  <title>Apply to Join — Rotaract Club of Lilongwe</title>
+  <title>Apply to Join â€” Rotaract Club of Lilongwe</title>
   <meta name="description" content="Apply to become a member of the Rotaract Club of Lilongwe. Join us in serving, leading, and growing together." />
 </svelte:head>
 
 <main>
-  <!-- ─── HERO ─── -->
+  <!-- â”€â”€â”€ HERO â”€â”€â”€ -->
   <section class="join-hero">
     <div class="hero-shade"></div>
     <div class="hero-inner">
@@ -45,12 +45,12 @@
         </p>
         <br>
       </div>
-      <!-- ─── FORM SECTION ─── -->
+      <!-- â”€â”€â”€ FORM SECTION â”€â”€â”€ -->
       <section class="form-wrap-section" id="apply">
         <div class="form-wrap-inner">
           {#if form?.success}
             <div class="success-card">
-              <div class="success-card__icon">✓</div>
+              <div class="success-card__icon">âœ“</div>
               <h2>APPLICATION<br /><span>SUBMITTED</span></h2>
               <p>
                 Thank you, <strong>{form.full_name}</strong>! Your application has been received.
@@ -66,7 +66,7 @@
             <div class="form-progress">
               {#each Array(totalSteps) as _, i}
                 <div class="form-progress__step" class:active={step === i + 1} class:done={step > i + 1}>
-                  <span class="form-progress__num">{step > i + 1 ? '✓' : i + 1}</span>
+                  <span class="form-progress__num">{step > i + 1 ? 'âœ“' : i + 1}</span>
                   <span class="form-progress__label">{i === 0 ? 'Your Details' : 'Motivation'}</span>
                 </div>
                 {#if i < totalSteps - 1}
@@ -77,7 +77,7 @@
     
             {#if form?.error}
               <div class="alert alert--error form-alert">
-                ⚠️ {form.error}
+                âš ï¸ {form.error}
               </div>
             {/if}
     
@@ -94,7 +94,7 @@
               novalidate
             >
               {#if step === 1}
-                <!-- ─── STEP 1 ─── -->
+                <!-- â”€â”€â”€ STEP 1 â”€â”€â”€ -->
                 <div class="form-step">
                   <p class="form-step__sub">Tell us a bit about yourself.</p>
     
@@ -188,13 +188,13 @@
                   <div class="form-nav">
                     <span></span>
                     <button type="button" class="btn-primary" on:click={nextStep}>
-                      Continue →
+                      Continue â†’
                     </button>
                   </div>
                 </div>
     
               {:else if step === 2}
-                <!-- ─── STEP 2 ─── -->
+                <!-- â”€â”€â”€ STEP 2 â”€â”€â”€ -->
                 <input type="hidden" name="full_name"   value={full_name} />
                 <input type="hidden" name="email"       value={email} />
                 <input type="hidden" name="phone"       value={phone} />
@@ -235,9 +235,9 @@
                   </div>
     
                   <div class="form-nav">
-                    <button type="button" class="btn-outline" on:click={prevStep}>← Back</button>
+                    <button type="button" class="btn-outline" on:click={prevStep}>â† Back</button>
                     <button type="submit" class="btn-primary" disabled={submitting}>
-                      {submitting ? 'Submitting…' : 'Submit Application'}
+                      {submitting ? 'Submittingâ€¦' : 'Submit Application'}
                     </button>
                   </div>
                 </div>
@@ -250,7 +250,7 @@
   </section>
 
 
-  <!-- ─── CTA SECTION ─── -->
+  <!-- â”€â”€â”€ CTA SECTION â”€â”€â”€ -->
   <section class="cta-section">
     <div class="cta-inner">
       <div class="cta-note">
@@ -271,7 +271,7 @@
       <div class="logo-wrap">
         <div class="image-logo"><img src={logo} alt="Rotaract Club of Lilongwe logo" /></div>
         <div>
-          <div class="logo-tagline">UNITE FOR GOOD</div>
+          <div class="logo-tagline">CREATE LASTING IMPACT</div>
           <div class="logo-name">Rotaract Club of Lilongwe</div>
         </div>
       </div>
@@ -281,13 +281,13 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
-      <span class="footer-tagline">UNITE FOR GOOD</span>
+      <span class="footer-tagline">CREATE LASTING IMPACT</span>
     </div>
   </div>
 </footer>
 
 <style>
-  /* ─── Hero ─── */
+  /* â”€â”€â”€ Hero â”€â”€â”€ */
   .join-hero {
     position: relative;
     min-height: 50vh;
@@ -335,7 +335,7 @@
     line-height: 1.75;
   }
 
-  /* ─── Form Wrap Section ─── */
+  /* â”€â”€â”€ Form Wrap Section â”€â”€â”€ */
   .form-wrap-section {
     background: var(--cream);
     padding: 60px 5vw 80px;
@@ -348,7 +348,7 @@
 
   
 
-  /* ─── Progress ─── */
+  /* â”€â”€â”€ Progress â”€â”€â”€ */
   .form-progress {
     display: flex;
     align-items: center;
@@ -414,7 +414,7 @@
 
   .form-progress__line.done { background: #2d7a4f; }
 
-  /* ─── Form Card ─── */
+  /* â”€â”€â”€ Form Card â”€â”€â”€ */
   .form {
     background: white;
     border: 1px solid rgba(0,0,0,.06);
@@ -530,7 +530,7 @@
 
   .form-alert { margin-bottom: 20px; }
 
-  /* ─── Success ─── */
+  /* â”€â”€â”€ Success â”€â”€â”€ */
   .success-card {
     background: white;
     border: 1px solid rgba(0,0,0,.06);
@@ -569,7 +569,7 @@
 
   .success-card :global(.btn-primary) { display: inline-flex; margin-top: 24px; }
 
-  /* ─── CTA ─── */
+  /* â”€â”€â”€ CTA â”€â”€â”€ */
   .cta-section {
     background: var(--primary);
     padding: 60px 5vw;
@@ -650,7 +650,7 @@
 
   .btn-white:hover { transform: translateY(-2px); }
 
-  /* ─── Footer ─── */
+  /* â”€â”€â”€ Footer â”€â”€â”€ */
   footer {
     background: var(--near-black);
     padding: 48px 5vw 28px;

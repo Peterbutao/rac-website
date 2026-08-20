@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { enhance } from '$app/forms';
   import type { ActionData } from './$types';
   import logo from '$lib/assets/logo.png';
@@ -18,12 +18,12 @@
 </script>
 
 <svelte:head>
-  <title>Partnerships — Rotaract Club of Lilongwe</title>
+  <title>Partnerships â€” Rotaract Club of Lilongwe</title>
   <meta name="description" content="Partner with the Rotaract Club of Lilongwe. Join us in making a difference through corporate sponsorships, community collaborations, and more." />
 </svelte:head>
 
 <main>
-  <!-- ─── HERO ─── -->
+  <!-- â”€â”€â”€ HERO â”€â”€â”€ -->
   <section class="partnerships-hero">
     <div class="hero-shade"></div>
     <div class="hero-inner">
@@ -38,7 +38,7 @@
     </div>
   </section>
 
-  <!-- ─── INFO CARDS ─── -->
+  <!-- â”€â”€â”€ INFO CARDS â”€â”€â”€ -->
   <section class="info-section">
     <div class="info-inner">
       <div class="info-header">
@@ -75,19 +75,19 @@
     </div>
   </section>
 
-  <!-- ─── FORM SECTION ─── -->
+  <!-- â”€â”€â”€ FORM SECTION â”€â”€â”€ -->
   <section class="form-section" id="contact">
     <div class="form-inner">
       {#if form?.success}
-        <!-- ─── SUCCESS STATE ─── -->
+        <!-- â”€â”€â”€ SUCCESS STATE â”€â”€â”€ -->
         <div class="success-card">
-          <div class="success-card__icon">✓</div>
+          <div class="success-card__icon">âœ“</div>
           <h2>INQUIRY<br /><span>SUBMITTED</span></h2>
           <p>
             Thank you, <strong>{form.contact_name}</strong>! Your partnership inquiry for <strong>{form.organization_name}</strong> has been received.
           </p>
           <p class="success-card__copy">
-            Our partnerships team will review your request and reach out to you at <strong>{form.email}</strong> within 3–5 business days.
+            Our partnerships team will review your request and reach out to you at <strong>{form.email}</strong> within 3â€“5 business days.
           </p>
           <a href="/" class="btn-primary">Back to Home</a>
         </div>
@@ -95,12 +95,12 @@
         <div class="form-header">
           <div class="section-pill dark">GET IN TOUCH</div>
           <h2>START A<br /><span>CONVERSATION</span></h2>
-          <p>Fill out the form below and we'll get back to you within 3–5 business days.</p>
+          <p>Fill out the form below and we'll get back to you within 3â€“5 business days.</p>
         </div>
 
         {#if form?.error}
           <div class="alert alert--error form-alert">
-            ⚠️ {form.error}
+            âš ï¸ {form.error}
           </div>
         {/if}
 
@@ -231,7 +231,7 @@
 
           <div class="form-actions">
             <button type="submit" class="btn-primary" disabled={submitting}>
-              {submitting ? 'Sending…' : 'Submit Inquiry'}
+              {submitting ? 'Sendingâ€¦' : 'Submit Inquiry'}
             </button>
           </div>
         </form>
@@ -239,7 +239,7 @@
     </div>
   </section>
 
-  <!-- ─── CTA SECTION ─── -->
+  <!-- â”€â”€â”€ CTA SECTION â”€â”€â”€ -->
   <section class="cta-section">
     <div class="cta-inner">
       <div class="cta-note">
@@ -248,7 +248,7 @@
           <h2>READY TO<br /><span>MAKE AN IMPACT?</span></h2>
           <p>
             Whether you're an organization looking to sponsor, a community group seeking collaboration,
-            or a professional offering mentorship — we'd love to hear from you.
+            or a professional offering mentorship â€” we'd love to hear from you.
           </p>
         </div>
       </div>
@@ -257,14 +257,14 @@
    </section>
  </main>
 
-<!-- ─── FOOTER ─── -->
+<!-- â”€â”€â”€ FOOTER â”€â”€â”€ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="logo-wrap">
         <div class="image-logo"><img src={logo} alt="Rotaract Club of Lilongwe logo" /></div>
         <div>
-          <div class="logo-tagline">UNITE FOR GOOD</div>
+          <div class="logo-tagline">CREATE LASTING IMPACT</div>
           <div class="logo-name">Rotaract Club of Lilongwe</div>
         </div>
       </div>
@@ -274,13 +274,13 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
-      <span class="footer-tagline">UNITE FOR GOOD</span>
+      <span class="footer-tagline">CREATE LASTING IMPACT</span>
     </div>
   </div>
 </footer>
 
 <style>
-  /* ─── Hero ─── */
+  /* â”€â”€â”€ Hero â”€â”€â”€ */
   .partnerships-hero {
     position: relative;
     min-height: 60vh;
@@ -357,7 +357,7 @@
     line-height: 1.75;
   }
 
-  /* ─── Info Section ─── */
+  /* â”€â”€â”€ Info Section â”€â”€â”€ */
   .info-section {
     background: var(--cream);
     padding: 96px 5vw;
@@ -432,7 +432,7 @@
     line-height: 1.65;
   }
 
-  /* ─── Form Section ─── */
+  /* â”€â”€â”€ Form Section â”€â”€â”€ */
   .form-section {
     background: var(--near-black);
     padding: 60px 5vw;
@@ -540,7 +540,7 @@
     margin-bottom: var(--space-5);
   }
 
-  /* ─── Success ─── */
+  /* â”€â”€â”€ Success â”€â”€â”€ */
   .success-card {
     background: rgba(255, 255, 255, .05);
     border: 1px solid rgba(255, 255, 255, .09);
@@ -586,7 +586,7 @@
     margin-top: var(--space-6);
   }
 
-  /* ─── CTA Section ─── */
+  /* â”€â”€â”€ CTA Section â”€â”€â”€ */
   .cta-section {
     background: var(--primary);
     padding: 76px 5vw;
@@ -668,7 +668,7 @@
     transform: translateY(-2px);
   }
 
-  /* ─── Footer ─── */
+  /* â”€â”€â”€ Footer â”€â”€â”€ */
   footer {
     background: var(--near-black);
     padding: 60px 5vw 34px;

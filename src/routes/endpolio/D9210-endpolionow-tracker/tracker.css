@@ -54,7 +54,7 @@
 }
 .polio-tracker .eyebrow{
   font-family:var(--font-mono);
-  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  font-size:.8rem; letter-spacing:.14em; text-transform:uppercase;
   color:#ffd9de; margin:0 0 12px;
 }
 .polio-tracker .eyebrow b{color:var(--gold);}
@@ -74,8 +74,8 @@
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.22);
   border-radius:999px;
-  padding:7px 14px;
-  font-size:.75rem;
+  padding:8px 15px;
+  font-size:.85rem;
   font-family:var(--font-mono);
   color:#fff;
 }
@@ -98,7 +98,7 @@
 }
 .polio-tracker .rc-title{
   font-family:var(--font-mono);
-  font-size:.72rem; text-transform:uppercase; letter-spacing:.14em;
+  font-size:.82rem; text-transform:uppercase; letter-spacing:.12em;
   color:var(--muted);
 }
 .polio-tracker .rc-pct{
@@ -106,13 +106,40 @@
   font-size:2rem; font-weight:700; color:var(--red); text-align:right; line-height:1;
 }
 .polio-tracker .rc-pct span{
-  display:block;
+  display:inline-block;
   font-family:var(--font-mono);
-  font-size:.7rem; font-weight:600; color:var(--muted);
+  font-size:.78rem; font-weight:600; color:var(--muted);
   margin-top:5px;
+  margin-left:10px;
 }
 
 /* Segmented month progress bar */
+.polio-tracker .overall-track{
+  height:14px;
+  border-radius:99px;
+  background:var(--line);
+  overflow:hidden;
+  margin-top:14px;
+}
+.polio-tracker .overall-fill{
+  display:block;
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg, var(--red), #f0627c);
+  transition:width .35s ease;
+  position:relative;
+}
+.polio-tracker .overall-fill::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.35));
+  animation:bar-shine 2.4s ease-in-out infinite;
+}
+@keyframes bar-shine{
+  0%{ opacity:.15; }
+  50%{ opacity:.7; }
+  100%{ opacity:.15; }
+}
 .polio-tracker .dose-row{
   display:grid;
   grid-template-columns:repeat(var(--seg-count, 10), minmax(0, 1fr));
@@ -146,12 +173,12 @@
 }
 .polio-tracker .seg-name{
   font-family:var(--font-mono);
-  font-size:.6rem; text-transform:uppercase; letter-spacing:.04em;
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.03em;
   color:var(--muted);
 }
 .polio-tracker .seg-val{
   font-family:var(--font-mono);
-  font-size:.64rem; font-weight:700; color:var(--ink);
+  font-size:.76rem; font-weight:700; color:var(--ink);
 }
 .polio-tracker .dose-stamp.next .seg-val{color:var(--gold);}
 .polio-tracker .seg-track{
@@ -179,11 +206,11 @@
 .polio-tracker .search::placeholder{color:var(--muted); opacity:.8;}
 .polio-tracker .search:focus{outline:2px solid var(--red); outline-offset:-1px; border-color:transparent;}
 .polio-tracker .filter-chip{
-  padding:8px 15px;
+  padding:9px 16px;
   border-radius:999px;
   border:1px solid var(--line);
   background:#fff;
-  font-size:.8rem; font-weight:600; cursor:pointer; color:var(--ink);
+  font-size:.9rem; font-weight:600; cursor:pointer; color:var(--ink);
   white-space:nowrap; font-family:var(--font-body);
   transition:background .15s, color .15s, border-color .15s;
 }
@@ -198,14 +225,14 @@
 }
 .polio-tracker .up-next .un-flag{
   flex:none;
-  font-family:var(--font-mono); font-size:.62rem; text-transform:uppercase;
-  letter-spacing:.1em; background:var(--gold); color:#4a3a00;
-  padding:5px 10px; border-radius:6px; font-weight:700;
+  font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase;
+  letter-spacing:.08em; background:var(--gold); color:#4a3a00;
+  padding:6px 12px; border-radius:6px; font-weight:700;
 }
-.polio-tracker .up-next .un-text{flex:1; font-size:.94rem; font-weight:600;}
+.polio-tracker .up-next .un-text{flex:1; font-size:1rem; font-weight:600;}
 .polio-tracker .up-next .un-text .un-when{
   font-family:var(--font-mono); font-weight:500; color:#d8c9cd;
-  font-size:.76rem; display:block; margin-top:2px;
+  font-size:.86rem; display:block; margin-top:3px;
 }
 .polio-tracker .up-next.all-done{background:var(--green);}
 
@@ -215,12 +242,12 @@
   margin-bottom:16px;
 }
 .polio-tracker .month-tab{
-  display:inline-flex; align-items:center; gap:6px;
-  padding:8px 14px;
+  display:inline-flex; align-items:center; gap:7px;
+  padding:9px 16px;
   border-radius:999px;
   border:1px solid var(--line);
   background:#fff;
-  font-size:.8rem; font-weight:600; cursor:pointer;
+  font-size:.9rem; font-weight:600; cursor:pointer;
   color:var(--muted); font-family:var(--font-body);
   transition:background .15s, color .15s, border-color .15s;
 }
@@ -248,16 +275,16 @@
   font-size:1.05rem; font-weight:700; margin:0 0 4px; color:var(--ink);
 }
 .polio-tracker .month-card .month-progress{
-  font-family:var(--font-mono); font-size:.74rem; color:var(--muted); margin-bottom:14px;
+  font-family:var(--font-mono); font-size:.84rem; color:var(--muted); margin-bottom:14px;
 }
 .polio-tracker .campaign-note{
   background:#fdf6e7;
   border:1px solid #f0e3bd;
   border-left:3px solid var(--gold);
   color:#7a5f16;
-  padding:9px 12px;
+  padding:10px 13px;
   border-radius:8px;
-  font-size:.84rem;
+  font-size:.95rem;
   margin-bottom:16px;
 }
 
@@ -266,7 +293,7 @@
   width:100%;
   border-collapse:separate;
   border-spacing:0;
-  font-size:.88rem;
+  font-size:.92rem;
   background:#fff;
   border:1px solid var(--line);
   border-radius:12px;
@@ -274,14 +301,49 @@
   box-shadow:0 4px 18px rgba(43,26,32,.05);
 }
 @media (max-width:640px){
-  .polio-tracker table.week-table{display:block; overflow-x:auto; white-space:nowrap;}
+  .polio-tracker table.week-table,
+  .polio-tracker table.week-table thead,
+  .polio-tracker table.week-table tbody,
+  .polio-tracker table.week-table tr,
+  .polio-tracker table.week-table td{display:block; width:100%;}
+  .polio-tracker table.week-table thead{display:none;}
+  .polio-tracker table.week-table tr{
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin:0 0 14px;
+    box-shadow:0 4px 18px rgba(43,26,32,.05);
+    overflow:hidden;
+  }
+  .polio-tracker table.week-table tr:last-child{margin-bottom:0;}
+  .polio-tracker table.week-table tr.is-current{box-shadow:0 0 0 2px var(--gold), 0 4px 18px rgba(43,26,32,.08);}
+  .polio-tracker table.week-table td{border-bottom:1px solid var(--line);}
+  .polio-tracker table.week-table td:last-child{border-bottom:none;}
+  .polio-tracker table.week-table tr td.col-0,
+  .polio-tracker table.week-table tr td.col-2{background:transparent;}
+  .polio-tracker table.week-table td.week-label{
+    width:100%;
+    background:var(--soft);
+    border-right:none;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+  .polio-tracker table.week-table td.week-label .w-range{margin-top:0;}
+  .polio-tracker table.week-table td[data-day]{padding:12px 16px 14px;}
+  .polio-tracker table.week-table td[data-day]::before{
+    content:attr(data-day);
+    display:block;
+    font-family:var(--font-mono);
+    font-size:.74rem; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
 }
 .polio-tracker table.week-table th{
   text-align:left;
   background:var(--soft);
   color:var(--muted);
   padding:13px 16px;
-  font-size:.66rem; text-transform:uppercase; letter-spacing:.12em;
+  font-size:.78rem; text-transform:uppercase; letter-spacing:.1em;
   font-family:var(--font-mono);
   border-bottom:1px solid var(--line);
 }
@@ -309,12 +371,12 @@
 }
 .polio-tracker table.week-table td.week-label .w-num{
   display:flex; align-items:center; gap:8px;
-  font-family:var(--font-mono); font-size:.7rem; font-weight:700;
-  letter-spacing:.06em; text-transform:uppercase; color:var(--ink);
+  font-family:var(--font-mono); font-size:.82rem; font-weight:700;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--ink);
 }
 .polio-tracker table.week-table td.week-label .w-range{
   display:block;
-  font-family:var(--font-mono); font-size:.64rem; color:var(--muted);
+  font-family:var(--font-mono); font-size:.76rem; color:var(--muted);
   margin-top:3px;
 }
 .polio-tracker table.week-table tr.is-current td{
@@ -324,9 +386,9 @@
 .polio-tracker table.week-table tr.is-current td.col-0,
 .polio-tracker table.week-table tr.is-current td.col-2{background:#fdf2dc;}
 .polio-tracker table.week-table .w-now{
-  padding:1px 8px; border-radius:999px; background:var(--gold); color:#fff;
-  font-style:normal; font-size:.52rem; font-weight:700; text-transform:uppercase;
-  letter-spacing:.05em;
+  padding:2px 9px; border-radius:999px; background:var(--gold); color:#fff;
+  font-style:normal; font-size:.64rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.04em;
 }
 
 /* Checkable post chain cards */
@@ -391,10 +453,10 @@
 }
 .polio-tracker .post-item .tag{
   display:inline-block;
-  font-family:var(--font-mono); font-size:.64rem; font-weight:600;
-  text-transform:uppercase; letter-spacing:.04em;
-  padding:2px 8px; border-radius:999px;
-  margin-right:7px; vertical-align:1px;
+  font-family:var(--font-mono); font-size:.74rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.03em;
+  padding:3px 9px; border-radius:999px;
+  margin-right:8px; vertical-align:1px;
 }
 .polio-tracker .tag-education{background:#eef1fa; color:#3a4b9e;}
 .polio-tracker .tag-visual{background:#fdf3d9; color:#8a6d00;}
@@ -417,7 +479,7 @@
 .polio-tracker .campaign-panel{margin-top:32px;}
 .polio-tracker .campaign-panel h3{
   font-family:var(--font-display);
-  font-size:.95rem; font-weight:700; text-transform:uppercase; letter-spacing:.02em;
+  font-size:1.05rem; font-weight:700; text-transform:uppercase; letter-spacing:.02em;
   margin:0 0 14px;
 }
 .polio-tracker .campaign-list{display:flex; flex-direction:column; gap:10px;}
@@ -443,24 +505,130 @@
   font-family:var(--font-display); font-size:1.7rem; font-weight:700; line-height:1;
 }
 .polio-tracker .ticket-stub .unit{
-  font-size:.58rem; text-transform:uppercase; letter-spacing:.1em; opacity:.9;
+  font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; opacity:.9;
 }
 .polio-tracker .ticket-body{
   flex:1; padding:12px 16px;
   display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
 }
 .polio-tracker .ticket-info{flex:1; min-width:200px;}
-.polio-tracker .ticket-info .title{font-weight:700; color:var(--ink); font-size:.94rem;}
-.polio-tracker .ticket-info .date{font-family:var(--font-mono); font-size:.72rem; color:var(--muted); margin-top:2px;}
-.polio-tracker .ticket-info .desc{font-size:.82rem; color:var(--muted); margin-top:4px; max-width:520px;}
+.polio-tracker .ticket-info .title{font-weight:700; color:var(--ink); font-size:1rem;}
+.polio-tracker .ticket-info .date{font-family:var(--font-mono); font-size:.8rem; color:var(--muted); margin-top:3px;}
+.polio-tracker .ticket-info .desc{font-size:.9rem; color:var(--muted); margin-top:4px; max-width:520px;}
 .polio-tracker .ticket-side{flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:6px;}
 .polio-tracker .ticket-badge{
-  font-family:var(--font-mono); font-size:.62rem; font-weight:700;
-  text-transform:uppercase; letter-spacing:.06em; padding:4px 10px; border-radius:999px;
+  font-family:var(--font-mono); font-size:.72rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05em; padding:5px 11px; border-radius:999px;
 }
 .polio-tracker .ticket-badge.past{background:var(--line); color:var(--muted);}
 .polio-tracker .ticket-badge.upcoming{background:var(--soft); color:var(--muted); border:1px solid var(--line);}
 .polio-tracker .ticket-badge.next{background:var(--gold); color:#4a3a00;}
 .polio-tracker .ticket-badge.live{background:var(--green); color:#fff;}
-.polio-tracker .countdown{font-family:var(--font-mono); font-size:.7rem; color:var(--muted);}
+.polio-tracker .countdown{font-family:var(--font-mono); font-size:.8rem; color:var(--muted);}
 .polio-tracker .ticket.past .countdown{color:#b7a9ad;}
+
+/* ===== Floating submit button ===== */
+.polio-tracker .save-fab{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:60;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 20px 12px 12px;
+  border:none;
+  border-radius:999px;
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--font-body);
+  cursor:pointer;
+  box-shadow:0 12px 32px rgba(43,26,32,.35);
+  transition:transform .15s, box-shadow .15s, background .15s;
+  text-align:left;
+  max-width:calc(100vw - 44px);
+}
+.polio-tracker .save-fab:hover{transform:translateY(-2px); box-shadow:0 16px 40px rgba(43,26,32,.4);}
+.polio-tracker .save-fab:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+.polio-tracker .save-fab .fab-icon{
+  flex:none;
+  width:42px; height:42px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--red); color:#fff;
+  transition:background .15s, transform .2s;
+}
+.polio-tracker .save-fab .fab-icon svg{width:20px; height:20px;}
+.polio-tracker .save-fab .fab-txt{display:flex; flex-direction:column; line-height:1.25; min-width:0;}
+.polio-tracker .save-fab .fab-label{font-weight:700; font-size:.92rem; white-space:nowrap;}
+.polio-tracker .save-fab .fab-status{
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.03em;
+  color:#cdbfc4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.polio-tracker .save-fab.dirty{
+  background:var(--red);
+  animation:fab-pulse 1.6s ease-in-out infinite;
+}
+.polio-tracker .save-fab.dirty .fab-icon{background:var(--gold); color:#4a3a00; transform:rotate(-12deg);}
+.polio-tracker .save-fab.dirty .fab-status{color:#ffe9ee;}
+.polio-tracker .save-fab.saving{background:var(--ink); pointer-events:none; opacity:.85;}
+.polio-tracker .save-fab.saving .fab-icon{background:var(--gold); color:#4a3a00; animation:fab-spin 1s linear infinite;}
+.polio-tracker .save-fab.saved{background:var(--green);}
+.polio-tracker .save-fab.saved .fab-icon{background:rgba(255,255,255,.9); color:var(--green);}
+.polio-tracker .save-fab.saved .fab-status{color:#e2f5ea;}
+.polio-tracker .save-fab.error{background:var(--red-deep); animation:none;}
+.polio-tracker .save-fab.error .fab-icon{background:#fff; color:var(--red-deep);}
+@keyframes fab-pulse{
+  0%,100%{ box-shadow:0 12px 32px rgba(43,26,32,.35); }
+  50%{ box-shadow:0 12px 36px rgba(217,38,69,.55); }
+}
+@keyframes fab-spin{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
+}
+
+.polio-tracker .fab-toast{
+  position:fixed;
+  right:22px;
+  bottom:86px;
+  z-index:59;
+  max-width:min(340px, calc(100vw - 44px));
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:4px solid var(--green);
+  color:var(--ink);
+  padding:11px 16px;
+  border-radius:10px;
+  font-size:.84rem;
+  box-shadow:0 12px 32px rgba(43,26,32,.2);
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:opacity .25s, transform .25s;
+}
+.polio-tracker .fab-toast.show{opacity:1; transform:translateY(0);}
+.polio-tracker .fab-toast.error{border-left-color:var(--red);}
+
+/* ===== Mobile responsiveness ===== */
+@media (max-width:760px){
+  .polio-tracker{padding:3vh 0 140px;}
+  .polio-tracker header .inner{padding:24px 18px 28px;}
+  .polio-tracker header h1{font-size:clamp(1.4rem, 5.5vw, 1.8rem);}
+  .polio-tracker .container{padding:0 14px 0;}
+  .polio-tracker .record-card{padding:18px 16px; margin:16px 0 14px;}
+  .polio-tracker .rc-pct{font-size:1.6rem;}
+  .polio-tracker .dose-row{grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px;}
+  .polio-tracker .dose-stamp{padding:7px 4px 8px;}
+  .polio-tracker .seg-head{flex-direction:column; gap:2px; align-items:center;}
+  .polio-tracker .controls{flex-direction:column; align-items:stretch; gap:8px;}
+  .polio-tracker .search{min-width:0; width:100%; padding:12px 14px; font-size:1rem;}
+  .polio-tracker .filter-chip{white-space:normal;}
+  .polio-tracker .up-next{align-items:flex-start; flex-direction:column; gap:10px;}
+  .polio-tracker .month-card{padding:18px 16px;}
+  .polio-tracker .ticket-body{flex-direction:column; align-items:flex-start;}
+  .polio-tracker .ticket-side{align-items:flex-start; width:100%; flex-direction:row; justify-content:space-between;}
+}
+@media (max-width:380px){
+  .polio-tracker .dose-row{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .polio-tracker .month-tab{padding:7px 11px; font-size:.74rem;}
+  .polio-tracker .save-fab{padding:10px 16px 10px 10px;}
+  .polio-tracker .save-fab .fab-icon{width:36px; height:36px;}
+  .polio-tracker .save-fab .fab-label{font-size:.84rem;}
+}

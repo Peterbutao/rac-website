@@ -168,6 +168,9 @@
   let activeMonth = DATA[0].id;
   let activeFilter = "all";
   let searchTerm = "";
+  let dirty = false;
+  let saving = false;
+  let lastSavedAt = null;
 
   // Parse a typed week range like "Week 1 (7–13 Sep)" or "Week 4 (28 Sep–4 Oct)"
   // into real Date objects so "this week" can be detected against the live clock.
@@ -206,20 +209,23 @@
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }catch(e){}
   }
 
-  let persistTimer = null;
-  function schedulePersist(){
-    if(persistTimer) clearTimeout(persistTimer);
-    persistTimer = setTimeout(persistToDb, 700);
-  }
-
-  async function persistToDb(){
+  async function submitToDb(){
+    if(saving) return;
+    saving = true;
+    setFabState();
     try{
       const { error } = await supabase
         .from("endpolio_progress")
         .upsert({ device_key: getDeviceKey(), progress, updated_at: new Date().toISOString() });
-      if(error) console.warn("End Polio tracker: progress sync failed", error.message);
+      if(error) throw error;
+      dirty = false;
+      lastSavedAt = new Date(Date.now()).toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+      showToast("Changes saved — now shared with every device.");
     }catch(e){
-      /* offline or DB not configured — local progress still works */
+      showToast("Couldn't save. Check your connection and try again.", true);
+    }finally{
+      saving = false;
+      setFabState();
     }
   }
 
@@ -227,15 +233,31 @@
     try{
       const { data, error } = await supabase
         .from("endpolio_progress")
-        .select("progress")
-        .eq("device_key", getDeviceKey())
-        .maybeSingle();
+        .select("device_key, progress, updated_at")
+        .order("updated_at", { ascending: false });
       if(error) throw error;
-      if(data && data.progress && typeof data.progress === "object"){
-        progress = { ...progress, ...data.progress };
-        saveLocal();
-        render();
+      if(data && data.length){
+        // merge every device's progress so a full-day view is shared across users,
+        // while keeping anything already checked here.
+        const merged = { ...progress };
+        data.forEach(row=>{
+          if(row.progress && typeof row.progress === "object"){
+            Object.keys(row.progress).forEach(k=>{
+              if(row.progress[k]) merged[k] = true;
+            });
+          }
+        });
+        const changed = JSON.stringify(merged) !== JSON.stringify(progress);
+        progress = merged;
+        if(changed){
+          saveLocal();
+          render();
+        }
+        if(data[0].updated_at){
+          lastSavedAt = new Date(data[0].updated_at).toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+        }
       }
+      setFabState();
     }catch(e){
       /* DB not set up yet — keep local-device progress */
     }
@@ -243,7 +265,39 @@
 
   function saveProgress(){
     saveLocal();
-    schedulePersist();
+    dirty = true;
+    setFabState();
+  }
+
+  function setFabState(){
+    const fab = document.getElementById("saveFab");
+    if(!fab) return;
+    fab.classList.remove("dirty","saving","saved","error");
+    const statusEl = fab.querySelector(".fab-status");
+    const labelEl  = fab.querySelector(".fab-label");
+    if(saving){
+      fab.classList.add("saving");
+      if(labelEl) labelEl.textContent = "Saving…";
+      if(statusEl) statusEl.textContent = "Writing to database";
+    } else if(dirty){
+      fab.classList.add("dirty");
+      if(labelEl) labelEl.textContent = "Save changes";
+      if(statusEl) statusEl.textContent = lastSavedAt ? `Last saved ${lastSavedAt}` : `Unsaved changes`;
+    } else {
+      fab.classList.add("saved");
+      if(labelEl) labelEl.textContent = "All saved";
+      if(statusEl) statusEl.textContent = lastSavedAt ? `Synced ${lastSavedAt}` : "No changes to sync";
+    }
+  }
+
+  function showToast(msg, isError){
+    const t = document.getElementById("fabToast");
+    if(!t) return;
+    t.textContent = msg;
+    t.classList.toggle("error", !!isError);
+    t.classList.add("show");
+    clearTimeout(t._timer);
+    if(!isError) t._timer = setTimeout(()=> t.classList.remove("show"), 3500);
   }
 
   function allItems(){
@@ -266,6 +320,10 @@
     const done = items.filter(i=>progress[i.id]).length;
     const pct = items.length ? Math.round((done/items.length)*100) : 0;
     document.getElementById("pctDone").innerHTML = pct+"%<span id=\"countDone\">"+done+" / "+items.length+" items</span>";
+    const fill = document.getElementById("overallFill");
+    const track = document.getElementById("overallTrack");
+    if(fill) fill.style.width = pct+"%";
+    if(track) track.setAttribute("aria-valuenow", String(pct));
   }
 
   function monthDone(monthId){
@@ -480,9 +538,9 @@
           <span class="w-num">${weekNum}${isCurrent?'<span class="w-now">this week</span>':''}</span>
           <span class="w-range">${range}</span>
         </td>
-        <td class="col-0">${dayCell(w.mon,m,wi,'mon',nextItemId)}</td>
-        <td class="col-1">${dayCell(w.wed,m,wi,'wed',nextItemId)}</td>
-        <td class="col-2">${dayCell(w.fri,m,wi,'fri',nextItemId)}</td>
+        <td class="col-0" data-day="Monday">${dayCell(w.mon,m,wi,'mon',nextItemId)}</td>
+        <td class="col-1" data-day="Wednesday">${dayCell(w.wed,m,wi,'wed',nextItemId)}</td>
+        <td class="col-2" data-day="Friday">${dayCell(w.fri,m,wi,'fri',nextItemId)}</td>
       </tr>`;
     });
 
@@ -541,6 +599,8 @@
   onMount(()=>{
     try{ progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ progress = {}; }
 
+    document.getElementById("saveFab").addEventListener("click", submitToDb);
+
     document.getElementById("searchBox").addEventListener("input",(e)=>{
       searchTerm = e.target.value;
       render();
@@ -569,6 +629,7 @@
       `${DATA[0].label} – ${DATA[DATA.length-1].label}`;
 
     render();
+    setFabState();
     loadFromDb();
   });
 </script>
@@ -599,6 +660,9 @@
         <span class="rc-title">Overall progress — tap a month to jump there</span>
         <span class="rc-pct" id="pctDone">0%<span id="countDone">0 / 0 items</span></span>
       </div>
+      <div class="overall-track" id="overallTrack" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span class="overall-fill" id="overallFill"></span>
+      </div>
       <div class="dose-row" id="doseRow" style="--seg-count: 10"></div>
     </div>
 
@@ -625,4 +689,15 @@
 
 
   </div>
+
+  <button class="save-fab" id="saveFab" aria-label="Save changes to database">
+    <span class="fab-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </span>
+    <span class="fab-txt">
+      <span class="fab-label">Save changes</span>
+      <span class="fab-status">No changes to sync</span>
+    </span>
+  </button>
+  <div class="fab-toast" id="fabToast" role="status"></div>
 </div>

@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   import { onMount } from 'svelte';
   import logo from "$lib/assets/logo.png";
 
@@ -16,10 +16,10 @@
 </script>
 
 <svelte:head>
-  <title>Projects — Rotaract Club of Lilongwe</title>
+  <title>Projects â€” Rotaract Club of Lilongwe</title>
   <meta
     name="description"
-    content="Explore the community service projects of the Rotaract Club of Lilongwe — from disease prevention and education to water and economic development initiatives across Malawi."
+    content="Explore the community service projects of the Rotaract Club of Lilongwe â€” from disease prevention and education to water and economic development initiatives across Malawi."
   />
 </svelte:head>
 
@@ -86,7 +86,7 @@
       <div class="logo-wrap">
         <div class="image-logo"><img src={logo} alt="roteract logo"></div>
         <div>
-          <div class="logo-tagline">UNITE FOR GOOD</div>
+          <div class="logo-tagline">CREATE LASTING IMPACT</div>
           <div class="logo-name">Rotaract Club of Lilongwe</div>
         </div>
       </div>
@@ -95,7 +95,7 @@
       </p>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
+      <span class="footer-copy">Â© 2025 Rotaract Club of Lilongwe. All rights reserved.</span>
     </div>
   </div>
 </footer>
