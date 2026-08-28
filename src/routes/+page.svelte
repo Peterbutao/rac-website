@@ -159,7 +159,7 @@
 </script>
 
 <svelte:head>
-  <title>Rotaract Club of Lilongwe â€” Create Lasting Impact</title>
+  <title>Rotaract Club of Lilongwe Create Lasting Impact</title>
   <link rel="preconnect" href="https://kwwvmkszattobpgisslt.supabase.co" crossorigin />
 </svelte:head>
 
@@ -174,8 +174,8 @@
       <div class="hero-text-main">
         <div class="hero-text-wrapper">
           <div class="hero-badge">
-            <span class="pulse-dot"></span>
             <span class="badge-text">ROTARACT CLUB OF LILONGWE</span>
+            <!-- <span class="pulse-dot"></span> -->
           </div>
           <div class="hero-headline">
             <div>SERVE.</div>
@@ -186,11 +186,11 @@
             </div>
           </div>
           <p class="hero-sub">
-            Empowering young leaders. Transforming communities in Lilongwe and beyond â€” under the banner of Rotary International.
+            Empowering young leaders. Transforming communities in Lilongwe and beyond under the banner of Rotary International.
           </p>
 
           <div class="hero-ctas">
-            <a href="/projects" class="btn-primary">Explore Projects â†’</a>
+            <a href="/projects" class="btn-primary">Explore Projects </a>
             {#if $member}
               <a href="/portal" class="btn-outline-white">Go to Portal</a>
             {:else}
@@ -261,7 +261,7 @@
         SERVICE
       </h2>
       <p class="about-body">
-        From peri-urban development,health outreach camps, youth mentorship, and vocational skills programmes, we turn youth-led ideas into tangible change â€” right here in Lilongwe's communities and beyond.
+        From peri-urban development,health outreach camps, youth mentorship, and vocational skills programmes, we turn youth-led ideas into tangible change right here in Lilongwe's communities and beyond.
       </p>
       <div class="about-team-carousel-wrap">
         {#if aboutTeamImages.length}
@@ -337,11 +337,11 @@
       </div>
       <div class="about-card">
         <div class="about-card-value">Lilongwe, Malawi</div>
-        <div class="about-card-label">Rooted in the capital â€” reaching communities across the nation</div>
+        <div class="about-card-label">Rooted in the capital reaching communities across the nation</div>
       </div>
       <div class="about-card dark">
         <div class="about-card-value dark">partners with RCL</div>
-        <div class="about-card-label dark">Backed by the Rotary Club of Lilongwe â€” chartered since 1970</div>
+        <div class="about-card-label dark">Backed by the Rotary Club of Lilongwe chartered since 1970</div>
       </div>
     </div>
 
@@ -364,7 +364,7 @@
         </h2>
       </div>
       <p class="avenues-subtitle">
-        Every project we run lives inside one of Rotaract's four avenues of service â€” the framework that has guided clubs worldwide since 1968.
+        Every project we run lives inside one of Rotaract's four avenues of service the framework that has guided clubs worldwide since 1968.
       </p>
     </div>
 
@@ -410,7 +410,7 @@
           Events & <span class="events-subtitle-accent" style="font-family: var(--font-cursive); color: var(--orange);">Sessions</span>
         </h2>
       </div>
-      <a href="https://www.instagram.com/rotaractlilongwe/" class="events-view-all">View all â†’</a>
+      <a href="https://www.instagram.com/rotaractlilongwe/" class="events-view-all">View all </a>
     </div>
 
     <div class="events-carousel">
@@ -556,7 +556,7 @@
 
     {#if HAS_MORE_PROJECTS}
       <div class="more-projects-wrapper">
-        <a href="/projects" class="btn-more-projects">More Projects â†’</a>
+        <a href="/projects" class="btn-more-projects">More Projects </a>
       </div>
     {/if}
   </div>
@@ -572,7 +572,7 @@
       Join a movement of young leaders committed to service, fellowship, and positive change in Lilongwe and beyond.
     </p>
     <div class="join-ctas">
-      <a href="/join" class="btn-white">Apply to Join â†’</a>
+      <a href="/join" class="btn-white">Apply to Join </a>
       <a href="/contact" class="btn-outline-white-ghost">Learn More</a>
     </div>
   </div>
@@ -684,7 +684,7 @@
   .hero-logo img { width: 400px; height: auto; }
   @media (min-width: 1024px) { .hero-logo { display: block; } }
   @media (max-width: 1023px) { .hero-logo { display: block; position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 0; opacity: 0.15; pointer-events: none; } .hero-logo img { width: 300px; height: auto; } .hero-wrapper { justify-content: flex-start; } }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,23,93,.15); border: 1px solid rgba(232,23,93,.4); border-radius: 100px; padding: 6px 16px; margin-bottom: 32px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,23,93,.15); border-right: 1px solid rgba(232,23,93,.4); border-radius: 100px; padding: 6px 16px; margin-bottom: 32px; }
   .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); display: inline-block; animation: pulse 2s infinite; }
   .badge-text { font-family: var(--font-jakarta); font-size: 11px; font-weight: 700; color: rgba(255,255,255,.8); letter-spacing: 1.5px; }
   .hero-headline { font-family: var(--font-display); font-size: clamp(60px, 9vw, 120px); color: white; line-height: .9; margin-bottom: 28px; }
