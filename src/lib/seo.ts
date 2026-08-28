@@ -22,7 +22,7 @@ export interface SEOData {
 
 export const DEFAULT_SEO: Required<Pick<SEOData, 'title' | 'description' | 'siteName' | 'locale' | 'robots' | 'type' | 'url'>> &
   Pick<SEOData, 'keywords' | 'twitterHandle' | 'image'> = {
-  title: 'Rotaract Club of Lilongwe â€” Create Lasting Impact',
+  title: 'Rotaract Club of Lilongwe Create Lasting Impact',
   description: 'Empowering young leaders and transforming communities in Lilongwe, Malawi. Join the Rotaract Club of Lilongwe in service, fellowship, and positive change.',
   keywords: [
     'Rotaract', 'Rotaract Club', 'Lilongwe', 'Malawi', 'Rotary International',
