@@ -30,7 +30,7 @@ export const DEFAULT_SEO: Required<Pick<SEOData, 'title' | 'description' | 'site
     'Service Projects', 'Professional Development', 'International Service', 'Club Service', 'Community Development'
   ],
   image: {
-    url: '/og-image.png?v=20260828',
+    url: '/og-image.jpg?v=20260828',
     width: 1200,
     height: 630,
     alt: 'Rotaract Club of Lilongwe logo - Create Lasting Impact'

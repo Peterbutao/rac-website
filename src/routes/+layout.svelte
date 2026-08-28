@@ -117,6 +117,8 @@
   <meta property="og:title" content={seo.title} />
   <meta property="og:description" content={seo.description} />
   <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:secure_url" content={ogImageUrl} />
+  <meta property="og:image:type" content={ogImageUrl.endsWith('.png') ? 'image/png' : 'image/jpeg'} />
     <meta property="og:image:width" content={String(ogImage.width)} />
     <meta property="og:image:height" content={String(ogImage.height)} />
     <meta property="og:image:alt" content={ogImage.alt} />
