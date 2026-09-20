@@ -179,9 +179,9 @@
           </div>
           <div class="hero-headline">
             <div>SERVE.</div>
-            <div class="hero-headline-word" style="color:{PRIMARY}">FELLOWSHIP</div>
+            <div class="hero-headline-word" style="color:{PRIMARY}">FELLOW</div>
             <div class="headline-row">
-              <!-- <span>SHIP.</span> -->
+              <span>SHIP.</span>
               <span class="headline-cursive">action.</span>
             </div>
           </div>
